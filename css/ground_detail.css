@@ -1,0 +1,20 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+form{
+    width:235px;
+    height:190px;
+}
+p{
+    margin: 3px auto;
+}
+input{
+    border: 1px solid #ccc;
+    border-radius:8px;
+    margin: 2px auto;
+    float:right;
+}
+a{
+    text-decoration: none;
+}

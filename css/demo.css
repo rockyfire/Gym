@@ -1,0 +1,28 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+input[type=submit]{
+    width: 300px;
+}
+input[type=text],input[type=password]{
+    border:1px solid #ccc;
+    border-radius: 8px;
+    width: 150px;
+}
+#forget_password ,#getvalcode {
+    font-size: 15px;
+}
+#forget_password_form input{
+    width:180px;
+    float:right;
+}
+#validatecode{
+    width: 100px;
+}
+.jumbotron{
+    background-color:#f9f9f9;
+}
+#box{
+    width: 400px;
+}
