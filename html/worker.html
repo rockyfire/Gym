@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/jquery.ui.css"/>
+    <link rel="stylesheet" href="../css/public.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Gym</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
+                    <li class="active"><a id="worker" href="#">工作人员管理</a></li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <table class="table table-bordered table-hover">
+                   <thead>
+                        <caption>工作人员管理</caption>
+                        <tr>
+                            <th>人员编号</th>
+                            <th>电子邮箱</th>
+                            <th>身份证号</th>
+                            <th>入职时间</th>
+                            <th>离职时间</th>
+                            <th>岗位编号</th>
+                            <th>岗位名称</th>
+                        </tr>
+                   </thead>
+                   <tbody>
+
+                   </tbody>
+               </table>
+            </div>
+            <div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">体育馆管理系统</a>
+                    <a id="worker_query_a" href="#" class="list-group-item">工作人员查询</a>
+                    <a id="worker_add_a" href="#" class="list-group-item">新增工作人员</a>
+                    <a id="worker_update_a" href="#" class="list-group-item">更新工作人员</a>
+                    <a id="worker_arrange_a" href="#" class="list-group-item">工作人员安排</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <form id="worker_add">
+        <p>
+          <label for="worker_add_id">人员编号</label>
+          <input id="worker_add_id" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_add_email">电子邮箱</label>
+          <input id="worker_add_email" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_add_cardID">身份证号</label>
+          <input id="worker_add_cardID" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_add_begintime">入职时间</label>
+          <input id="worker_add_begintime" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_add_endtime">离职时间</label>
+          <input id="worker_add_endtime" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_add_jobid">岗位编号</label>
+          <input id="worker_add_jobid" type="text" name="">
+        </p>
+    </form>
+
+    <form id="worker_query">
+        <p>
+          <label for="worker_query_id">人员编号</label>
+          <input id="worker_query_id" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_query_email">电子邮箱</label>
+          <input id="worker_query_email" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_query_cardID">身份证号</label>
+          <input id="worker_query_cardID" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_query_begintime">入职时间</label>
+          <input id="worker_query_begintime" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_query_endtime">离职时间</label>
+          <input id="worker_query_endtime" type="text" name="">
+        </p>
+    </form>
+    <form id="worker_update">
+        <p>
+          <label for="worker_update_id">人员编号</label>
+          <input id="worker_update_id" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_update_email">电子邮箱</label>
+          <input id="worker_update_email" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_update_cardID">身份证号</label>
+          <input id="worker_update_cardID" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_update_begintime">入职时间</label>
+          <input id="worker_update_begintime" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_update_endtime">离职时间</label>
+          <input id="worker_update_endtime" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_update_jobid">岗位编号</label>
+          <input id="worker_update_jobid" type="text" name="">
+        </p>
+    </form>
+    <form id="worker_arrange">
+        <p>
+          <label for="worker_arrange_id">人员编号</label>
+          <input id="worker_arrange_id" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_arrange_time">工作时间</label>
+          <input id="worker_arrange_time" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_arrange_location">工作地点</label>
+          <input id="worker_arrange_location" type="text" name="">
+        </p>
+        <p>
+          <label for="worker_arrange_content">工作描述</label>
+          <textarea id="worker_arrange_content"></textarea>
+        </p>
+    </form>
+
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery.ui.js"></script>
+	<script type="text/javascript" src="../js/jquery.form.js"></script>
+    <script type="text/javascript" src="../js/worker.js"></script>
+</body>
+</html>

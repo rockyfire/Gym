@@ -8,6 +8,7 @@
     <title>完善个人信息</title>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/jquery.ui.css"/>
+    <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/person.css"/>
 </head>
 <body>
@@ -25,20 +26,26 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a id="game" href="nologin_game.html">体育赛事</a></li>
-                    <li><a id="ground" href="nologin_ground.html">场地详情</a></li>
-                    <li><a id="equipment" href="nologin_equipment.html">闲置器材</a></li>
-                    <li><a id="notice" href="nologin_notice.html">公告通知</a></li>
+                    <li><a id="game" href="login_game.html">体育赛事</a></li>
+                    <li><a id="ground" href="login_ground.html">场地详情</a></li>
+                    <li><a id="equipment" href="login_equipment.html">闲置器材</a></li>
+                    <li><a id="resource" href="my_resource.html">我的资源</a></li>
+                    <li><a id="notice" href="login_notice.html">公告通知</a></li>
                     <li><a id="connection" href="connection.html">联系我们</a></li>
+                    <li class="active"><a id="personal" href="personal.html">个人资料</a></li>
                 </ul>
-                <div id="personal_information"><a href="username.html">返回</a></div>
+                <div id="personal_information"><a href="../index.html">退出登录</a></div>
             </div>
         </div>
     </nav>
 
     <form>
         <p>
-             <label for="unit">单位:</label>
+            <label for="student_id">学&nbsp;&nbsp;&nbsp;&nbsp;号:</label>
+            <input id="student_id" type="text" name="student_id"/>
+        </p>
+        <p>
+             <label for="unit">单&nbsp;&nbsp;&nbsp;&nbsp;位:</label>
              <input id="unit" type="text" name=""/>
         </p>
         <p>
@@ -46,11 +53,11 @@
             <input id="user_id" type="text" name=""/>
         </p>
         <p>
-            <label for="email">邮箱:</label>
+            <label for="email">邮&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
             <input id="email" type="text" name=""/>
         </p>
         <p>
-            <label for="hostel">宿舍:</label>
+            <label for="hostel">宿&nbsp;&nbsp;&nbsp;&nbsp;舍:</label>
             <input id="hostel" type="text" name=""/>
         </p>
     </form>

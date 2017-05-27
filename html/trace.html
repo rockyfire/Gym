@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>财务管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/jquery.ui.css"/>
+    <link rel="stylesheet" href="../css/public.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Gym</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li class="active"><a id="trace" href="trace.html">财务管理</a></li>
+                    <li><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
+                    <li><a id="worker" href="worker.html">工作人员管理</a></li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <table class="table table-bordered table-hover">
+                   <thead>
+                        <caption>财务管理</caption>
+                        <tr>
+                            <th>交易号</th>
+                            <th>交易时间</th>
+                            <th>交易金额</th>
+                            <th>交易类型</th>
+                            <th>交易备注</th>
+                            <th>交易详情</th>
+                        </tr>
+                   </thead>
+                   <tbody>
+
+                   </tbody>
+               </table>
+            </div>
+            <div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">体育馆管理系统</a>
+                    <a id="trace_query_a" href="#" class="list-group-item">交易查询</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form id="trace_query">
+        <p>
+          <label for="trace_query_time">交易时间</label>
+          <input id="trace_query_time" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_query_rate">交易金额</label>
+          <input id="trace_query_rate" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_query_type">交易类型</label>
+          <input id="trace_query_type" type="text" name="">
+        </p>
+    </form>
+
+    <form id="trace_update">
+        <p>
+          <label for="trace_id">交易号</label>
+          <input id="trace_id" disabled="disabled" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_time">交易时间</label>
+          <input id="trace_time" disabled="disabled" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_rate">交易金额</label>
+          <input id="trace_rate" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_type">交易类型</label>
+          <input id="trace_type" type="text" name="">
+        </p>
+        <p>
+          <label for="trace_text">修改备注</label>
+          <input id="trace_text" type="text" name="">
+        </p>
+    </form>
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery.ui.js"></script>
+	<script type="text/javascript" src="../js/jquery.form.js"></script>
+    <script src="../js/trace.js" ></script>
+</body>
+</html>

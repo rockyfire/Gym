@@ -5,7 +5,8 @@
     <title>体育馆网上系统</title>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/jquery.ui.css"/>
-    <link rel="stylesheet" href="../css/username.css"/>
+    <link rel="stylesheet" href="../css/my_resource.css"/>
+    <link rel="stylesheet" href="../css/username.css">
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -22,14 +23,16 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a id="game" href="nologin_match.html">体育赛事</a></li>
-                    <li><a id="ground" href="nologin_ground.html">热门场地</a></li>
-                    <li><a id="equipment" href="nologin_equipment.html">闲置器材</a></li>
-                    <li><a id="notice" href="nologin_notice.html">公告通知</a></li>
+                    <li><a id="gym" href="../index.html">首页</a></li>
+                    <li><a id="match" href="login_game.html">体育赛事</a></li>
+                    <li><a id="ground" href="login_ground.html">场地详情</a></li>
+                    <li><a id="equipment" href="login_equipment.html">闲置器材</a></li>
+                    <li class="active"><a id="resource" href="#">我的资源</a></li>
+                    <li><a id="notice" href="login_notice.html">公告通知</a></li>
                     <li><a id="connection" href="connection.html">联系我们</a></li>
-                    <li class="active"><a href="#">我的资源</a></li>
+                    <li><a id="personal" href="personal.html">个人资料</a></li>
                 </ul>
-                <div id="personal_information"><a>欢迎你</a></div>
+                <div id="personal_information"><a href="../index.html">退出登录</a></div>
             </div>
         </div>
     </nav>
@@ -37,12 +40,13 @@
         <caption>我关注的赛事</caption>
         <thead>
             <tr>
+                <th>赛事编号</th>
+                <th>赛事名称</th>
                 <th>赛事时间</th>
                 <th>赛事地点</th>
-                <th>赛事参与者</th>
+                <th>赛事级别</th>
                 <th>赛事主办方</th>
-                <th>赛事承办方</th>
-                <th>赛事详情</th>
+                <th>是否撤销</th>
                 <th>赛事关注</th>
             </tr>
         </thead>
@@ -55,12 +59,13 @@
         <caption>我申请的赛事</caption>
         <thead>
             <tr>
+                <th>赛事编号</th>
+                <th>赛事名称</th>
                 <th>赛事时间</th>
                 <th>赛事地点</th>
-                <th>赛事参与者</th>
+                <th>赛事级别</th>
                 <th>赛事主办方</th>
-                <th>赛事承办方</th>
-                <th>赛事详情</th>
+                <th>是否撤销</th>
                 <th>是否通过</th>
             </tr>
         </thead>
@@ -72,6 +77,7 @@
         <caption>我预定的场地</caption>
         <thead>
             <tr>
+                <th>场地ID</th>
                 <th>场地名称</th>
                 <th>预约时间</th>
                 <th>结束时间</th>
@@ -89,6 +95,7 @@
         <caption>我租借的器材</caption>
         <thead>
             <tr>
+                <th>器材ID</th>
                 <th>器材名称</th>
                 <th>租借数量</th>
                 <th>借出时间</th>

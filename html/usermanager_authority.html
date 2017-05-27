@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>权限管理</title>
+    <link rel="stylesheet" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" href="../css/jquery.ui.css"/>
+    <link rel="stylesheet" href="../css/public.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Gym</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li class="active"><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
+                    <li><a id="worker" href="worker.html">工作人员管理</a></li>
+               </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <button class="btn btn-default">普通用户</button>
+                        <button class="btn btn-default">管理员</button>
+                        <button class="btn btn-default">super管理员</button>
+                    </div>
+                    <form>
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                            <tr>
+                                <th>用户编号</th>
+                                <th>用户名称</th>
+                                <th>当前角色</th>
+                                <th><button type="button" class="btn btn-default"
+                                            data-toggle="modal" data-target="#role_update">
+                                    角色修改</button>
+                                </th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">体育馆管理系统</a>
+                    <a id="" class="list-group-item">用户查询</a>
+                    <a id="" data-toggle="modal" data-target="#add_user" class="list-group-item">新增用户</a>
+                    <a id="" href="#" class="list-group-item">权限管理</a>
+                    <a id="" href="usermanager_role.html" class="list-group-item">角色管理</a>
+               </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--角色修改-->
+    <div id="role_update" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span><span class="sr-only">关闭弹窗</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">角色修改</h4>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <input type="hidden" name="userNumber" value="">
+                        <table class="table table-bordered table-responsive table-striped">
+                            <tbody>
+                            <tr>
+                                <td>场地管理员</td>
+                                <td><input type="checkbox" name="" value=""></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+<!--新增用户弹窗-->
+    <div id="add_user" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span><span class="sr-only">关闭弹窗</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">新增用户</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="equipment_query">
+            <p>
+              <label for="equipment_query_name">器材名称</label>
+              <input id="equipment_query_name" type="text" name="">
+            </p>
+            <p>
+              <label for="equipment_query_type">器材类型</label>
+              <input id="equipment_query_type" type="text" name="">
+            </p>
+            <p>
+              <label for="equipment_query_location">器材位置</label>
+              <input id="equipment_query_location" type="text" name="">
+            </p>
+            <p>
+              <label for="equipment_query_canuse">可用状态</label>
+              <input id="equipment_query_canuse" type="text" name="">
+            </p>
+        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/jquery.ui.js"></script>
+	<script type="text/javascript" src="../js/jquery.form.js"></script>
+    <script type="text/javascript" src="../js/login_game.js"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@
     <title>Equipment</title>
     <link rel="stylesheet" href="../css/bootstrap.css"/>
     <link rel="stylesheet" href="../css/jquery.ui.css"/>
-    <link rel="stylesheet" href="../css/equipment_public.css">
+    <link rel="stylesheet" href="../css/public.css">
     <link rel="stylesheet" href="../css/equipment.css"/>
 </head>
 <body>
@@ -23,31 +23,49 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">器材管理</a></li>
-                    <li><a id="equipment_query_a" href="#">器材查询</a></li>
-                    <li><a id="equipment_add_a" href="#">购置新添</a></li>
-                    <li><a id="equipment_repair_a" href="equipment_repair.html">维修情况</a></li>
-                    <li><a id="equipment_rent_a" href="equipment_rent.html">租借情况</a></li>
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li class="active"><a id="equipment" href="#">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
+                    <li><a id="worker" href="worker.html">工作人员管理</a></li>
                </ul>
             </div>
         </div>
     </nav>
 
     <div class="container">
-       <table class="table table-bordered table-hover table-striped">
-           <thead>
-                <tr>
-                    <th>器材名称</th>
-                    <th>器材位置</th>
-                    <th>器材租金</th>
-                    <th>使用情况</th>
-                    <th>是否删除</th>
-                </tr>
-           </thead>
-           <tbody>
+        <div class="row row-offcanvas row-offcanvas-right">
+            <div class="col-xs-12 col-sm-9">
+                <table class="table table-bordered table-hover">
+                   <thead>
+                        <caption>器材管理</caption>
+                        <tr>
+                            <th>器材名称</th>
+                            <th>闲置数量</th>
+                            <th>器材位置</th>
+                            <th>器材租金</th>
+                            <th>使用情况</th>
+                            <th>是否删除</th>
+                        </tr>
+                   </thead>
+                   <tbody>
 
-           </tbody>
-       </table>
+                   </tbody>
+               </table>
+            </div>
+            <div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">体育馆管理系统</a>
+                    <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
+                    <a id="equipment_add_a" href="#" class="list-group-item">购置新添</a>
+                    <a id="equipment_repair_a" href="equipment_repair.html" class="list-group-item">维修情况</a>
+                    <a id="equipment_rent_a" href="equipment_rent.html" class="list-group-item">租借情况</a>
+               </div>
+            </div>
+        </div>
     </div>
 
 

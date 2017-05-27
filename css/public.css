@@ -18,14 +18,3 @@ input{
 	background: url("../img/delete.png");
 	background-repeat:no-repeat;
 }
-#personal_information{
-    float: right;
-    font-size: 20px;
-    line-height: 50px
-}
-#sidebar a{
-    font-size: 20px;
-}
-form{
-	visibility: hidden;
-}

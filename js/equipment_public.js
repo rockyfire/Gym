@@ -5,7 +5,12 @@ $(function (){
 	$("#equipment_query_a").click(function(){
 		$("#equipment_query").dialog('open');
 	});
-
+	$("#equipment_repair_apply_a").click(function (){
+		$("#equipment_repair_apply").dialog('open');
+	});
+	$("#equipment_repair_query_a").click(function (){
+		$("#equipment_repair_query").dialog('open');
+	});
 	$("#equipment_add").dialog({
 			title : "器材添加",
 			width : 365,
@@ -30,6 +35,23 @@ $(function (){
 			title : "器材查询",
 			width : 255,
 			height : 275,
+			minWidth : 275,
+			minHeight: 200,
+			show : 'blind',
+			hide : 'puff',
+			modal: true,
+			buttons :{
+				'筛选':function(){},
+				'取消':function(){
+					$(this).resetForm().dialog('close');
+				},
+			},
+			autoOpen:false,
+		});
+	$("#equipment_repair_apply").dialog({
+			title : "维修申请",
+			width : 265,
+			height : 400,
 			minWidth : 275,
 			minHeight: 200,
 			show : 'blind',
