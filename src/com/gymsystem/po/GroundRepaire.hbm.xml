@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.GroundRepaire" table="GROUNDREPAIRE">
+        <id name="groundRepaire_id" type="java.lang.Integer">
+            <column name="GROUNDREPAIRE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="repairedNumber" type="java.lang.String">
+            <column name="REPAIREDNUMBER" />
+        </property>
+        <property name="repairedDate" type="java.util.Date">
+            <column name="REPAIREDDATE" />
+        </property>
+        <property name="repairedDescript" type="java.lang.String">
+            <column name="REPAIREDDESCRIPT" />
+        </property>
+        <property name="repairedPay" type="long">
+            <column name="REPAIREDPAY" />
+        </property>
+        <many-to-one name="ground" class="com.gymsystem.po.Ground" fetch="join">
+            <column name="GROUND" />
+        </many-to-one>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
+        <list name="workManages" inverse="false" table="WORKMANAGE" lazy="true" cascade="save-update">
+            <key>
+                <column name="GROUNDREPAIRE_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.WorkManage" />
+        </list>
+    </class>
+</hibernate-mapping>

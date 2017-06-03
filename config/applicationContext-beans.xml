@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	
+	
+	
+    <bean name="hibernateDaoSupport" class="org.springframework.orm.hibernate4.support.HibernateDaoSupport" abstract="true">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+	<bean name="userDaoImpl" class="com.gymsystem.daoImpl.UserDaoImpl">
+	    <!-- 这里也可以在每个daoimpl中注入sessionFactory -->
+	    <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean name="roleDaoImpl" class="com.gymsystem.daoImpl.RoleDaoImpl" parent="hibernateDaoSupport">
+	    <!-- 只要在HibernateDaoSupport 中注入 sessionFactory 并且声明为抽象类-->
+	    <!-- 当前的bean 就可以声明继承hibernateDaoSupport bean ,就不用再每个DaoImpl 中注入sessionFactory -->
+	</bean>
+	
+	<bean name="userMessageDaoImpl" class="com.gymsystem.daoImpl.UserMessageDaoImpl" parent="hibernateDaoSupport"></bean>
+	
+	<bean name="roleResourceDaoImpl" class="com.gymsystem.daoImpl.RoleResourceDaoImpl" parent="hibernateDaoSupport"></bean>
+	
+	<bean name="userAction" class="com.gymsystem.action.UserAction">
+	</bean>
+	
+	<bean name="equipmentRentDaoImpl" class="com.gymsystem.daoImpl.EquipmentRentDaoImpl" parent="hibernateDaoSupport"></bean>
+	<bean name="equipmentDaoImpl" class="com.gymsystem.daoImpl.EquipmentDaoImpl" parent="hibernateDaoSupport"></bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+

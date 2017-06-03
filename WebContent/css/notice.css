@@ -1,0 +1,14 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+}
+input{
+	border: 1px solid #ccc;
+	border-radius: 8px;
+}
+input[type=radio]{
+	width: 20px;
+}

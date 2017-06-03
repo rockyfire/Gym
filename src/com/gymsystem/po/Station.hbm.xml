@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Station" table="STATION">
+        <id name="station_id" type="java.lang.Integer">
+            <column name="STATION_ID" />
+            <generator class="native" />
+        </id>
+        <property name="stationNumber" type="java.lang.String">
+            <column name="STATIONNUMBER" />
+        </property>
+        <property name="stationName" type="java.lang.String">
+            <column name="STATIONNAME" />
+        </property>
+        <property name="descript" type="java.lang.String">
+            <column name="DESCRIPT" />
+        </property>
+        <property name="responsibility" type="java.lang.String">
+            <column name="RESPONSIBILITY" />
+        </property>
+        <property name="salary" type="long">
+            <column name="SALARY" />
+        </property>
+        <list name="workers" inverse="false" table="WORKER" lazy="true" cascade="save-update">
+            <key>
+                <column name="STATION_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.Worker" />
+        </list>
+    </class>
+</hibernate-mapping>

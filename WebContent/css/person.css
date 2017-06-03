@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+#personal_information{
+    float: right;
+    font-size: 20px;
+    line-height: 50px
+}
+#sidebar a{
+    font-size: 20px;
+}

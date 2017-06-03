@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.WorkManage" table="WORKMANAGE">
+        <id name="workManage_id" type="java.lang.Integer">
+            <column name="WORKMANAGE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="manageNumber" type="java.lang.String">
+            <column name="MANAGENUMBER" />
+        </property>
+        <property name="descript" type="java.lang.String">
+            <column name="DESCRIPT" />
+        </property>
+        <property name="workAddress" type="java.lang.String">
+            <column name="WORKADDRESS" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="workStartTime" type="java.util.Date">
+            <column name="WORKSTARTTIME" />
+        </property>
+        <property name="workEndTime" type="java.util.Date">
+            <column name="WORKENDTIME" />
+        </property>
+        <many-to-one name="groundRent" class="com.gymsystem.po.GroundRent" fetch="join">
+            <column name="GROUNDRENT" />
+        </many-to-one>
+        <many-to-one name="groundRepaire" class="com.gymsystem.po.GroundRepaire" fetch="join">
+            <column name="GROUNDREPAIRE" />
+        </many-to-one>
+        <many-to-one name="equipmentRent" class="com.gymsystem.po.EquipmentRent" fetch="join">
+            <column name="EQUIPMENTRENT" />
+        </many-to-one>
+        <many-to-one name="equipmentRepair" class="com.gymsystem.po.EquipmentRepair" fetch="join">
+            <column name="EQUIPMENTREPAIR" />
+        </many-to-one>
+        <many-to-one name="gameResource" class="com.gymsystem.po.GameResource" fetch="join">
+            <column name="GAMERESOURCE" />
+        </many-to-one>
+        <list name="workers" inverse="false" table="WORKER" lazy="true" cascade="save-update">
+            <key>
+                <column name="WORKMANAGE_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.Worker" />
+        </list>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
+    </class>
+</hibernate-mapping>

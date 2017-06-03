@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-20 10:18:30 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.TradeCard" table="TRADECARD">
+        <id name="tradeCard_id" type="java.lang.Integer">
+            <column name="TRADECARD_ID" />
+            <generator class="native" />
+        </id>
+        <property name="tradeNumber" type="java.lang.String">
+            <column name="TRADENUMBER" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="isOut" type="boolean" access="field">
+            <column name="ISOUT" />
+        </property>
+        <property name="isIn" type="boolean" access="field">
+            <column name="ISIN" />
+        </property>
+        <property name="account" type="long">
+            <column name="ACCOUNT" />
+        </property>
+        <one-to-one name="equipmentRent" class="com.gymsystem.po.EquipmentRent"></one-to-one>
+        <one-to-one name="equipmentRepair" class="com.gymsystem.po.EquipmentRepair"></one-to-one>
+        <one-to-one name="groundRent" class="com.gymsystem.po.GroundRent"></one-to-one>
+        <one-to-one name="groundRepaire" class="com.gymsystem.po.GroundRepaire"></one-to-one>
+        <one-to-one name="workManage" class="com.gymsystem.po.WorkManage"></one-to-one>
+    </class>
+</hibernate-mapping>

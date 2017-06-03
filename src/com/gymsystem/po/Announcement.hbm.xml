@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Announcement" table="ANNOUNCEMENT">
+        <id name="announcement_id" type="java.lang.Integer">
+            <column name="ANNOUNCEMENT_ID" />
+            <generator class="native" />
+        </id>
+        <property name="announcementNumber" type="java.lang.String">
+            <column name="ANNOUNCEMENTNUMBER" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="announceTime" type="java.util.Date">
+            <column name="ANNOUNCETIME" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" />
+        </property>
+        <many-to-one name="annoucer" class="com.gymsystem.po.User" fetch="join"  cascade="save-update">
+            <column name="ANNOUCER" />
+        </many-to-one>
+        <list name="announceComments" inverse="false" table="ANNOUNCECOMMENT" lazy="true" cascade="save-update,delete">
+            <key>
+                <column name="ANNOUNCEMENT_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.AnnounceComment" />
+        </list>
+    </class>
+</hibernate-mapping>

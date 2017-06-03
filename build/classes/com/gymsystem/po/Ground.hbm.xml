@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Ground" table="GROUND">
+        <id name="ground_id" type="java.lang.Integer">
+            <column name="GROUND_ID" />
+            <generator class="native" />
+        </id>
+        <property name="groundNumber" type="java.lang.String">
+            <column name="GROUNDNUMBER" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="location" type="java.lang.String">
+            <column name="LOCATION" />
+        </property>
+        <property name="groundName" type="java.lang.String">
+            <column name="GROUNDNAME" />
+        </property>
+        <property name="descript" type="java.lang.String">
+            <column name="DESCRIPT" />
+        </property>
+        <property name="canUse" type="boolean">
+            <column name="CANUSE" />
+        </property>
+        <property name="groundRentRate" type="long">
+            <column name="GROUNDRENTRATE" />
+        </property>
+        <list name="groundRents" inverse="false" table="GROUNDRENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="GROUND_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.GroundRent" />
+        </list>
+        <list name="groundRepaires" inverse="false" table="GROUNDREPAIRE" lazy="true" cascade="save-update">
+            <key>
+                <column name="GROUND_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.GroundRepaire" />
+        </list>
+    </class>
+</hibernate-mapping>

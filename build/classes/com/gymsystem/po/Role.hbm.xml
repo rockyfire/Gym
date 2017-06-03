@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Role" table="ROLE">
+        <id name="role_id" type="java.lang.Integer">
+            <column name="ROLE_ID" />
+            <generator class="native" />
+        </id>
+        <property name="roleName" type="java.lang.String">
+            <column name="ROLENAME" />
+        </property>
+        <property name="roleNumber" type="java.lang.String">
+            <column name="ROLENUMBER" />
+        </property>
+        <list name="roleResources" inverse="false" table="ROLERESOURCE" lazy="true" cascade="save-update">
+            <key>
+                <column name="ROLE_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.RoleResource" />
+        </list>
+        <list name="users" inverse="true" lazy="false" cascade="save-update">
+            <key>
+                <column name="ROLE_ID" />
+            </key>
+            <list-index></list-index>
+            <many-to-many column="USER_ID" class="com.gymsystem.po.User" />
+        </list>
+    </class>
+</hibernate-mapping>
