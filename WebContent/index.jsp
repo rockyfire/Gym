@@ -52,7 +52,7 @@
                             <form id="sign" class="form-signin form-horizontal" role="form" action="userAction_login">
                                 <p style="margin-top: 10px;">
                                     <label for="username">帐&nbsp;&nbsp;&nbsp;&nbsp;号:</label>
-                                    <input id="username" type="text" name="userVo.username" />
+                                    <input id="username" type="text" name="userVo.userName" />
                                 </p>
                                 <p>
                                     <label for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
@@ -85,7 +85,7 @@
                                 </p>
                                 <p>
                                     <label for="user_name">姓&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
-                                    <input id="user_name" type="text" name="userVo.username"/>
+                                    <input id="user_name" type="text" name="userVo.userName"/>
                                 </p>
                                 <p>
                                     <label for="pass_word">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>

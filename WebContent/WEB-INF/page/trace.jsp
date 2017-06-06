@@ -25,12 +25,12 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">首页</a></li>
-                    <li><a id="" href="game.jsp">赛事管理</a></li>
-                    <li><a id="" href="ground.jsp">场地管理</a></li>
-                    <li><a id="" href="equipment.jsp">器材管理</a></li>
-                    <li><a id="" href="trace.jsp">财务管理</a></li>
-                    <li><a id="" href="usermanager.jsp">用户管理</a></li>
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="" href="game.html">赛事管理</a></li>
+                    <li><a id="" href="ground.html">场地管理</a></li>
+                    <li><a id="" href="equipment.html">器材管理</a></li>
+                    <li><a id="" href="trace.html">财务管理</a></li>
+                    <li><a id="" href="usermanager.html">用户管理</a></li>
                     <li class="active"><a id="" href="#">公告管理</a></li>
                     <li><a id="" href="">工作人员安排</a></li>
                </ul>

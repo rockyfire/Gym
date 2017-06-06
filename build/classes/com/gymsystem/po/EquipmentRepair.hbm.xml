@@ -11,16 +11,16 @@
         <property name="repairTime" type="java.util.Date">
             <column name="REPAIRTIME" />
         </property>
-        <property name="equipmentRepairNumber" type="java.lang.String">
+        <property name="equipmentRepairNumber" type="int">
             <column name="EQUIPMENTREPAIRNUMBER" />
         </property>
         <property name="repairContent" type="java.lang.String">
             <column name="REPAIRCONTENT" />
         </property>
-        <many-to-one name="equipment" class="com.gymsystem.po.Equipment" fetch="join" cascade="save-update">
+        <many-to-one name="equipment" class="com.gymsystem.po.Equipment"  lazy="false" fetch="join" cascade="save-update">
             <column name="EQUIPMENT" />
         </many-to-one>
-        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard" lazy="false"></one-to-one>
         <list name="workManages" inverse="false" table="WORKMANAGE" lazy="true" cascade="save-update">
             <key>
                 <column name="EQUIPMENTREPAIR_ID" />

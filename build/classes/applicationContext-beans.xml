@@ -30,13 +30,23 @@
 	
 	<bean name="userMessageDaoImpl" class="com.gymsystem.daoImpl.UserMessageDaoImpl" parent="hibernateDaoSupport"></bean>
 	
-	<bean name="roleResourceDaoImpl" class="com.gymsystem.daoImpl.RoleResourceDaoImpl" parent="hibernateDaoSupport"></bean>
+	<bean name="roleResourceDaoImpl" class="com.gymsystem.daoImpl.RoleResourceDaoImpl" parent="hibernateDaoSupport"> </bean>
+	
+	<bean name="groundDaoImpl" class="com.gymsystem.daoImpl.GroundDaoImpl" parent="hibernateDaoSupport"></bean>
+	
+	<bean name="groundRepairDaoImpl" class="com.gymsystem.daoImpl.GroundRepairDaoImpl" parent="hibernateDaoSupport"></bean>
+	
+	<bean name="groundRentDaoImpl" class="com.gymsystem.daoImpl.GroundRentDaoImpl" parent="hibernateDaoSupport"></bean>
+	
 	
 	<bean name="userAction" class="com.gymsystem.action.UserAction">
 	</bean>
 	
+	
+	<bean name="equipmentRepairImpl"  class="com.gymsystem.daoImpl.EquipmentRepaireDaoImpl"   parent="hibernateDaoSupport"></bean>  
 	<bean name="equipmentRentDaoImpl" class="com.gymsystem.daoImpl.EquipmentRentDaoImpl" parent="hibernateDaoSupport"></bean>
-	<bean name="equipmentDaoImpl" class="com.gymsystem.daoImpl.EquipmentDaoImpl" parent="hibernateDaoSupport"></bean>
+	<bean name="equipmentDaoImpl"     class="com.gymsystem.daoImpl.EquipmentDaoImpl" parent="hibernateDaoSupport"></bean>
+	
 	
 </beans>
 

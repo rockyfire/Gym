@@ -16,7 +16,8 @@ public class UserAction extends BaseAction<UserVo>{
 	private String userNumber;
 	
 	
-	public String userAuthority(){	
+	public String userAuthority(){
+		
 		return "userAuthority";
 	}
 	
@@ -24,7 +25,7 @@ public class UserAction extends BaseAction<UserVo>{
 	
 	public String addUser(){
 		userService.addUser(userVo);
-		System.out.println(userVo.getUsername());
+		System.out.println(userVo.getUserName());
 		list = userService.getUsers();
 		request.put("users", list);
 		return "addUser_success";
@@ -51,19 +52,18 @@ public class UserAction extends BaseAction<UserVo>{
 	
 	
 	public String login(){
-		if(userService.login(userVo)){
+			userService.login(userVo);
 			list = userService.getUsers();
 			request.put("users", list);
+			System.out.println(list.toString());
 			return "login_success";
-		}
-		return "error";
 	}
 	
 	
 	public String userDetails(){
 		System.out.println(userNumber);
 		UserVo userVo = userService.getUserByNumber(userNumber);
-		System.out.println(userVo.getUsername()+"+++++++++++++++++");
+		System.out.println(userVo.getUserName()+"+++++++++++++++++");
 		list.add(userVo);
 		System.out.println(userVo.toString());
 		return "userDetails_success";
@@ -92,6 +92,10 @@ public class UserAction extends BaseAction<UserVo>{
 	public List<UserVo> getList() {
 		return list;
 	}
+
+
+	
+	
 	
 	public UserVo getUserVo() {
 		return userVo;
@@ -100,5 +104,7 @@ public class UserAction extends BaseAction<UserVo>{
 	public void setUserVo(UserVo userVo) {
 		this.userVo = userVo;
 	}
+
+	
 
 }

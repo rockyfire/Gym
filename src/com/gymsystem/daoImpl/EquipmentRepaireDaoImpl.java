@@ -3,7 +3,6 @@ package com.gymsystem.daoImpl;
 import java.util.List;
 
 import com.gymsystem.dao.EquipmentRepaireDao;
-import com.gymsystem.po.Equipment;
 import com.gymsystem.po.EquipmentRepair;
 
 public class EquipmentRepaireDaoImpl extends BaseDaoImpl<EquipmentRepair> implements EquipmentRepaireDao{
@@ -17,5 +16,17 @@ public class EquipmentRepaireDaoImpl extends BaseDaoImpl<EquipmentRepair> implem
 		}else {
 			return null;
 		}
+	}
+
+	@Override
+	public void addEquipmentRepair(EquipmentRepair repair) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().save(repair);
+	}
+
+	@Override
+	public EquipmentRepair getEquipmentByName(String equipmentName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -29,14 +29,14 @@
         <property name="groundRentRate" type="long">
             <column name="GROUNDRENTRATE" />
         </property>
-        <list name="groundRents" inverse="false" table="GROUNDRENT" lazy="true" cascade="save-update">
+        <list name="groundRents" inverse="false" table="GROUNDRENT" lazy="false" cascade="save-update">
             <key>
                 <column name="GROUND_ID" />
             </key>
             <list-index></list-index>
             <one-to-many class="com.gymsystem.po.GroundRent" />
         </list>
-        <list name="groundRepaires" inverse="false" table="GROUNDREPAIRE" lazy="true" cascade="save-update">
+        <list name="groundRepaires" inverse="false" table="GROUNDREPAIRE" lazy="false" cascade="save-update">
             <key>
                 <column name="GROUND_ID" />
             </key>

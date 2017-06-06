@@ -19,7 +19,6 @@ import com.gymsystem.util.MyUtil;
 import com.gymsystem.vo.UserVo;
 
 
-@Component
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 
 	private SessionFactory sessionFactory;

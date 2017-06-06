@@ -27,7 +27,7 @@
         <many-to-one name="user" class="com.gymsystem.po.User" fetch="join">
             <column name="USER" />
         </many-to-one>
-        <many-to-one name="ground" class="com.gymsystem.po.Ground" fetch="join">
+        <many-to-one name="ground" class="com.gymsystem.po.Ground" fetch="join" lazy="false">
             <column name="GROUND" />
         </many-to-one>
         <many-to-one name="gameResource" class="com.gymsystem.po.GameResource" fetch="join">

@@ -4,6 +4,10 @@ import com.gymsystem.po.EquipmentRepair;
 
 public interface EquipmentRepaireDao extends BaseDao<EquipmentRepair> {
 
-	public EquipmentRepair getEquipmentByNumber(String number);
+	public void addEquipmentRepair(EquipmentRepair repair);
+	
+	public EquipmentRepair getEquipmentByName(String equipmentName);
+	
+	public EquipmentRepair getEquipmentByNumber(String equipmentNumber);
 	
 }

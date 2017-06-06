@@ -8,7 +8,7 @@
             <column name="USERMESSAGE_ID" />
             <generator class="native" />
         </id>
-        <property name="username" type="java.lang.String">
+        <property name="userName" type="java.lang.String">
             <column name="USERNAME" />
         </property>
         <property name="userNumber" type="java.lang.String">

@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * 
- * ï¿½Ã»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
+ * ÓÃ»§ÏêÏ¸ÐÅÏ¢
  * 
  * @author e.IT
  *
@@ -15,11 +15,11 @@ public class UserMessage implements Serializable{
 	private Integer userMessage_id;
 	
 	private String userNumber;
-	private String username;
+	private String userName;
 	private String address;
 	private String sex;
-	private Date   bornDay;  		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	private String IDNumber;	//ï¿½ï¿½Ýºï¿½
+	private Date   bornDay;  		//³öÉúÈÕÆÚ
+	private String IDNumber;	//Éí·ÝºÅ
 	private String age;
 	private String schoolName;
 	private String grade;
@@ -38,7 +38,7 @@ public class UserMessage implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "UserMessage [userMessage_id=" + userMessage_id + ", userNumber=" + userNumber + ", username=" + username
+		return "UserMessage [userMessage_id=" + userMessage_id + ", userNumber=" + userNumber + ", userName=" + userName
 				+ ", address=" + address + ", sex=" + sex + ", bornDay=" + bornDay + ", IDNumber=" + IDNumber + ", age="
 				+ age + ", schoolName=" + schoolName + ", grade=" + grade + ", _class=" + _class + ", phoneNumber="
 				+ phoneNumber + ", eMail=" + eMail + ", user=" + "]";
@@ -64,12 +64,12 @@ public class UserMessage implements Serializable{
 		this.userMessage_id = userMessage_id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getAddress() {
@@ -160,11 +160,11 @@ public class UserMessage implements Serializable{
 		this.user = user;
 	}
 
-	public UserMessage(String userNumber, String username, String address, String sex, Date bornDay, String iDNumber,
+	public UserMessage(String userNumber, String userName, String address, String sex, Date bornDay, String iDNumber,
 			String age, String schoolName, String grade, String _class, String phoneNumber, String eMail) {
 		super();
 		this.userNumber = userNumber;
-		this.username = username;
+		this.userName = userName;
 		this.address = address;
 		this.sex = sex;
 		this.bornDay = bornDay;

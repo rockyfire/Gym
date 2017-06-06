@@ -7,6 +7,8 @@ import com.gymsystem.vo.RoleVo;
 
 public interface RoleService {
 
+	public List<RoleVo> getRoles();
+	
 	public List<RoleVo> getRoles(String userNumber);
 	
 	public boolean addRole(RoleVo roleVo);
@@ -15,6 +17,7 @@ public interface RoleService {
 	
 	public boolean deleteRole(RoleVo roleVo);
 	
+	public RoleVo getRoleByNumber(String roleNumber);
 	/**
 	 * 
 	 * 获取角色资源

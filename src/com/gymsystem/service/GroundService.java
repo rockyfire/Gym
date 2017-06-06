@@ -9,10 +9,10 @@ import com.gymsystem.vo.GroundVo;
 
 public interface GroundService {
 
-	public List<GroundVo> getGroundVo();
+	public List<GroundVo> getGroundVos();
 	
 	
-	public List<GroundVo> queryGoundVo();
+	public List<GroundVo> queryGoundVos();
 	
 	public boolean addGround(GroundVo groundVo);
 	
@@ -20,6 +20,11 @@ public interface GroundService {
 	
 	public boolean updateGround(GroundVo groundVo);
 	
+	public GroundVo getGroundVoByNumber(String groundNumber);
+	
+	public List<GroundRepairVo> getGroundRepairByNumber(String groundNumber);
+	
+	public boolean addGroundRepair(String groundNumber,GroundRepairVo groundRepairVo);
 	
 	
 	/**

@@ -25,13 +25,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">首页</a></li>
+                    <li><a href="main.html">首页</a></li>
                     <li class="active"><a id="game" href="#">赛事管理</a></li>
-                    <li><a id="ground" href="ground.jsp">场地管理</a></li>
-                    <li><a id="equipment" href="equipment.jsp">器材管理</a></li>
-                    <li><a id="trace" href="trace.jsp">财务管理</a></li>
-                    <li><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
-                    <li><a id="notice" href="notice.jsp">公告管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
                     <li><a id="" href="">工作人员安排</a></li>
                </ul>
             </div>

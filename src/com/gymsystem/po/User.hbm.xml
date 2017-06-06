@@ -23,11 +23,15 @@
             <column name="ROLE" />
         </many-to-one> -->
         
+        
+        
         <list name="roles" inverse="false" lazy="false" cascade="save-update">
             <key><column name="USER_ID"></column></key>
             <list-index></list-index>
             <many-to-many column="ROLE_ID" class="com.gymsystem.po.Role"></many-to-many>
         </list>
+        
+        
         
         <list name="equipmentRents" inverse="false" table="EQUIPMENTRENT" lazy="true" cascade="save-update">
             <key>

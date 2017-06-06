@@ -17,7 +17,7 @@
         <property name="location" type="java.lang.String">
             <column name="LOCATION" />
         </property>
-        <property name="rate" type="java.lang.String">
+        <property name="rate" type="double">
             <column name="RATE" />
         </property>
         <property name="buyTime" type="java.util.Date">
@@ -34,6 +34,15 @@
         </property>
         <property name="number" type="int">
             <column name="NUMBER" />
+        </property>
+        <property name="accountNumber" type="int">
+            <column name="ACCOUNTNUMBER" />
+        </property>
+        <property name="repairNumber" type="int">
+            <column name="REPAIRNUMBER" />
+        </property>
+        <property name="rentedNumber" type="int">
+            <column name="RENTEDNUMBER" />
         </property>
         <list name="equipmentRents" inverse="false" table="EQUIPMENTRENT" lazy="true" cascade="save-update">
             <key>

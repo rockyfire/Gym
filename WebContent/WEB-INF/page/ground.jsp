@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,13 +26,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">首页</a></li>
-                    <li><a id="game" href="game.jsp">赛事管理</a></li>
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
                     <li class="active"><a id="ground" href="#">场地管理</a></li>
-                    <li><a id="equipment" href="equipment.jsp">器材管理</a></li>
-                    <li><a id="trace" href="trace.jsp">财务管理</a></li>
-                    <li><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
-                    <li><a id="notice" href="notice.jsp">公告管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
                     <li><a id="" href="">工作人员安排</a></li>
                </ul>
             </div>
@@ -49,11 +50,26 @@
 							<th>场地位置</th>
 							<th>场地租金</th>
 							<th>使用情况</th>
-							<th>是否删除</th>
+							<th>可用状态</th>
+							<th>维修记录</th>
+							<th>删除</th>
 						</tr>
 					</thead>
 					<tbody>
-
+					<s:iterator value="#request.grounds" var="ground">
+						<tr>
+							<td><s:property value="#ground.groundNumber"/></td>
+							<td><s:property value="#ground.groundName"/></td>
+							<td><s:property value="#ground.groundLocation"/></td>
+							<td><s:property value="#ground.rentRate"/></td>
+							<td><s:property value="#ground.description"/></td>
+							<td><s:property value="#ground.canUser"/></td>
+							<td><a href="groundAction_toGroundRepaires?groundVo.groundNumber=
+										<s:property value="#ground.groundNumber"/>">维修记录</a></td>
+							<td><a href="groundAction_deleteGround?groundVo.groundNumber=
+										<s:property value="#ground.groundNumber"/>">删除</a></td>
+						</tr>
+					</s:iterator>
 					</tbody>
 				</table>
             </div>
@@ -62,8 +78,7 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="ground_query_a" href="#" class="list-group-item">场地查询</a>
 					<a id="ground_add_a" href="#" class="list-group-item">场地添加</a>
-					<a id="ground_repair_a" href="ground_repair.jsp" class="list-group-item">维修情况</a>
-					<a id="ground_rent_a" href="ground_rent.jsp" class="list-group-item">预约情况</a>
+					<a id="ground_rent_a" href="groundAction_toGroundRent" class="list-group-item">预约情况</a>
                </div>
             </div>
         </div>
@@ -73,27 +88,28 @@
 
 
    	<div id="ground_add">
-   		<form>
-   			<p>
+   		<form action="groundAction_addGround" method="get">
+    			<p>
    				<label for="ground_add_name">场地名称</label>
-   				<input id="ground_add_name" type="text" name="">
+   				<input id="ground_add_name" type="text" name="groundVo.groundName">
    			</p>
    			<p>
    				<label for="ground_add_type">场地类型</label>
-   				<input id="ground_add_type" type="text" name="">
+   				<input id="ground_add_type" type="text" name="groundVo.groundType">
    			</p>
    			<p>
    				<label for="ground_add_location">场地位置</label>
-   				<input id="ground_add_location" type="text" name="">
+   				<input id="ground_add_location" type="text" name="groundVo.groundLocation">
    			</p>
    			<p>
    				<label for="ground_add_rate">场地租金</label>
-   				<input id="ground_add_rate" type="text" name="">
+   				<input id="ground_add_rate" type="text" name="groundVo.rentRate">
    			</p>
    			<p>
    				<label for="ground_add_description">场地说明</label>
-   				<textarea id="ground_add_description"></textarea>
+   				<textarea id="ground_add_description" name="groundVo.description"></textarea>
    			</p>
+   			<s:submit value="提交"></s:submit>
    		</form>
    	</div>
 

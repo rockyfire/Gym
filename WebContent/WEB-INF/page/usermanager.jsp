@@ -53,6 +53,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
                     	<s:iterator value="#request.users" var="user">
                     		<tr>
                     			<td>
@@ -62,7 +63,7 @@
                     			</td>
                     			<td>
                     				<a>
-                    					<s:property value="#user.username"/>
+                    					<s:property value="#user.userName"/>
                     				</a>
                     			</td>
                     			<td>
@@ -82,7 +83,7 @@
                     <a id="" class="list-group-item">用户查询</a>
                     <a id="" data-toggle="modal" data-target="#add_user" class="list-group-item">新增用户</a>
                     <a id="" href="userAction_userAuthority" class="list-group-item">权限管理</a>
-                    <a id="" href="usermanager_role.jsp" class="list-group-item">角色管理</a>
+                    <a id="" href="roleAction_toRoleManage" class="list-group-item">角色管理</a>
                </div>
             </div>
         </div>

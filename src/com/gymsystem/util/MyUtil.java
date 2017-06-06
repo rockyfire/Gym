@@ -10,26 +10,13 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Map.Entry;
 
+import net.sf.json.JSONObject;
+
 public class MyUtil {
 
 	/**
-	 * 字符串转换成日期
-	 * @param text
-	 * @return
-	 */
-	public static Date strToDate(String text){
-		try {
-			Date date=new SimpleDateFormat("yyyy-MM-dd").parse(text);
-			return date;
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
-	/**
 	 * 
-	 * ����û���ţ���ɹ����ǣ�����+��λ�����
+	 * 随机数组成的ID
 	 * 
 	 * @return
 	 */
@@ -92,6 +79,8 @@ public class MyUtil {
 		}
 		return builder.toString();
 	}
+	
+	
 }
 
 

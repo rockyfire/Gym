@@ -5,27 +5,30 @@ import java.util.Date;
 public class EquipmentRepairVo {
 
 	private String equipmentRepairNumber;
-	private String workers;		//Î¬ĞŞÈËÔ±
-	private long   pay;
-	private Date   equipmentTime;
-	private String description;
-	private String equipmentNumber;//Î¬ĞŞÆ÷²Ä±àºÅ
-	private String equipmentName;  //Î¬ĞŞÆ÷²ÄÃû³Æ
-	
-	public EquipmentRepairVo() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public EquipmentRepairVo(String equipmentRepairNumber, String workers, long pay, Date equipmentTime,
-			String description, String equipmentNumber, String equipmentName) {
+	private String equipmentName;
+	private Date equipmentTime;
+	private int equipmentNumber;
+	private long pay;
+	private String workers;
+	private String description;
+
+	// å™¨æç»´ä¿®çš„è¯¦ç»†ä¿¡æ¯
+	public EquipmentRepairVo(String equipmentRepairNumber,
+			String equipmentName, Date equipmentTime, long pay,
+			String workers, int equipmentNumber, String description) {
 		super();
 		this.equipmentRepairNumber = equipmentRepairNumber;
-		this.workers = workers;
-		this.pay = pay;
-		this.equipmentTime = equipmentTime;
-		this.description = description;
-		this.equipmentNumber = equipmentNumber;
 		this.equipmentName = equipmentName;
+		this.equipmentTime = equipmentTime;
+		this.pay = pay;
+		this.workers = workers;
+		this.equipmentNumber = equipmentNumber;
+		this.description = description;
+	}
+
+	public EquipmentRepairVo() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getEquipmentRepairNumber() {
@@ -68,11 +71,11 @@ public class EquipmentRepairVo {
 		this.description = description;
 	}
 
-	public String getEquipmentNumber() {
+	public int getEquipmentNumber() {
 		return equipmentNumber;
 	}
 
-	public void setEquipmentNumber(String equipmentNumber) {
+	public void setEquipmentNumber(int equipmentNumber) {
 		this.equipmentNumber = equipmentNumber;
 	}
 
@@ -86,11 +89,11 @@ public class EquipmentRepairVo {
 
 	@Override
 	public String toString() {
-		return "EquipmentRepairVo [equipmentRepairNumber=" + equipmentRepairNumber + ", workers=" + workers + ", pay="
-				+ pay + ", equipmentTime=" + equipmentTime + ", description=" + description + ", equipmentNumber="
-				+ equipmentNumber + ", equipmentName=" + equipmentName + "]";
+		return "EquipmentRepairVo [equipmentRepairNumber="
+				+ equipmentRepairNumber + ", workers=" + workers + ", pay="
+				+ pay + ", equipmentTime=" + equipmentTime + ", description="
+				+ description + ", equipmentNumber=" + equipmentNumber
+				+ ", equipmentName=" + equipmentName + "]";
 	}
-	
-	
-	
+
 }

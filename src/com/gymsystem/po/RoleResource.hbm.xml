@@ -8,7 +8,7 @@
             <column name="ROLERESOURCE_ID" />
             <generator class="native" />
         </id>
-        <property name="RoleResourceNumber" type="java.lang.String">
+        <property name="roleResourceNumber" type="java.lang.String">
             <column name="ROLERESOURCENUMBER" />
         </property>
         <property name="ResourceName" type="java.lang.String">
@@ -17,12 +17,15 @@
         <property name="descript" type="java.lang.String">
             <column name="DESCRIPT" />
         </property>
-        <list name="roles" inverse="false" table="ROLE" lazy="true" cascade="save-update">
+        
+        
+        
+        <list name="roles" inverse="false" lazy="false" cascade="save-update">
             <key>
                 <column name="ROLERESOURCE_ID" />
             </key>
             <list-index></list-index>
-            <one-to-many class="com.gymsystem.po.Role" />
+            <many-to-many column="ROLE_ID" class="com.gymsystem.po.Role" />
         </list>
     </class>
 </hibernate-mapping>

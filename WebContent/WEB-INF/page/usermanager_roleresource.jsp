@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head lang="en">
     <meta charset="UTF-8">
@@ -22,13 +23,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">首页</a></li>
-                    <li><a id="game" href="game.jsp">赛事管理</a></li>
-                    <li><a id="ground" href="ground.jsp">场地管理</a></li>
-                    <li><a id="equipment" href="equipment.jsp">器材管理</a></li>
-                    <li><a id="trace" href="trace.jsp">财务管理</a></li>
-                    <li class="active"><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
-                    <li><a id="notice" href="notice.jsp">公告管理</a></li>
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li class="active"><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
                     <li><a id="" href="">工作人员安排</a></li>
                </ul>
             </div>
@@ -42,22 +43,40 @@
             <div class="col-xs-12 col-sm-9">
                 <div class="modal-body">
                     <div class="text-center">
-                        <button class="btn btn-default">新增资源</button>
-                        <button class="btn btn-default">保存更改</button>
-                        <span class="text-right">当前角色：</span>
+                        <span class="text-right">当前角色：<s:property value="#request.roleName"/></span>
                     </div>
-                    <form>
+                    <form action="roleAction_updateRoleResources" method="get">
                         <table class="table table-bordered table-responsive table-striped">
                             <thead>
                             <tr>
                                 <th>资源编号</th>
                                 <th>资源名称</th>
-                                <th>资源等级</th>
                                 <th>资源描述</th>
-                                <th><input type="checkbox" name="roleResources" value="resourceId">选中</th>
+                                <th>选中</th>
                             </tr>
                             </thead>
+                            
+                            <tbody>
+                            	<s:iterator value="#request.resources" var="resource">
+                            		<tr>
+                            			<td><div><s:property value="#resource.roleResoruceNumber"/></div></td>
+                            			<td><div><s:property value="#resource.roleResourceName"/></div></td>
+                            			<td><div><s:property value="#resource.description"/></div></td>
+                            			<td>
+	                            			<div>
+	                            				<input type="checkbox" name="resourceNumbers" 
+	                            						<s:if test="#resource.roleNumber!=null">
+	                            							checked="checked"
+	                            						</s:if>
+	                            						value='<s:property value="#resource.roleResoruceNumber"/>'>
+	                            			</div>
+                            			</td>
+                            		</tr>
+                            	</s:iterator>
+                            </tbody>
                         </table>
+                        <input type="hidden" name="roleVo.roleNumber" value='<s:property value="#request.roleNumber"/>'>
+                        <s:submit value="提交"></s:submit>
                     </form>
                 </div>
             <!--列出左右的资源，如果该资源是该角色拥有的就在复选框中选上-->
@@ -67,7 +86,7 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="" class="list-group-item">用户查询</a>
                     <a id="" data-toggle="modal" data-target="#add_user" class="list-group-item">新增用户</a>
-                    <a id="" href="usermanager_authority.jsp" class="list-group-item">权限管理</a>
+                    <a id="" href="usermanager_authority.html" class="list-group-item">权限管理</a>
                     <a id="" href="#" class="list-group-item">角色管理</a>
                </div>
             </div>

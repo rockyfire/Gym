@@ -24,7 +24,7 @@
             <column name="GROUND" />
         </many-to-one>
         <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
-        <list name="workManages" inverse="false" table="WORKMANAGE" lazy="true" cascade="save-update">
+        <list name="workManages" inverse="false" table="WORKMANAGE" lazy="false" cascade="save-update">
             <key>
                 <column name="GROUNDREPAIRE_ID" />
             </key>

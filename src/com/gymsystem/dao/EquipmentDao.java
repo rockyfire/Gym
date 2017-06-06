@@ -15,19 +15,16 @@ public interface EquipmentDao extends BaseDao<Equipment> {
 	 */
 	public void addEquipment(Equipment equipment);
 	
+	public Equipment getEquipmentByNumber(String equipment);
+	
 	public List<Equipment> getEquipments(Map<String,String> queryCondition);
 	
-	public Equipment getEquipmentByNumber(String equipment);
+	public List<Equipment> queryEquipments(Equipment equipment);
 	
 	public List<Equipment> getEquipmentByType(String equipmentType);
 	
 	public List<Equipment> getEquipmentByName(String equipmentName);
 	
-	/**
-	 *	��ȡ���õ�����
-	 * 
-	 * @return
-	 */
 	public List<Equipment> getUsableEquipments();
 	
 }

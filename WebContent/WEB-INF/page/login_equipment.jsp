@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,16 +28,16 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a id="gym" href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-                    <li><a id="match" href="login_game.jsp">体育赛事</a></li>
-                    <li><a id="ground" href="login_ground.jsp">场地详情</a></li>
+                    <li><a id="gym" href="${pageContext.request.contextPath}/index.html">首页</a></li>
+                    <li><a id="match" href="login_game.html">体育赛事</a></li>
+                    <li><a id="ground" href="login_ground.html">场地详情</a></li>
                     <li class="active"><a id="equipment" href="#">闲置器材</a></li>
-                    <li><a id="resource" href="my_resource.jsp">我的资源</a></li>
-                    <li><a id="notice" href="login_notice.jsp">公告通知</a></li>
-                    <li><a id="connection" href="connection.jsp">联系我们</a></li>
-                    <li><a id="personal" href="personal.jsp">个人资料</a></li>
+                    <li><a id="resource" href="my_resource.html">我的资源</a></li>
+                    <li><a id="notice" href="login_notice.html">公告通知</a></li>
+                    <li><a id="connection" href="connection.html">联系我们</a></li>
+                    <li><a id="personal" href="personal.html">个人资料</a></li>
                 </ul>
-                <div id="personal_information"><a href="${pageContext.request.contextPath}/index.jsp">退出登录</a></div>
+                <div id="personal_information"><a href="${pageContext.request.contextPath}/index.html">退出登录</a></div>
             </div>
         </div>
     </nav>
@@ -57,7 +58,40 @@
                         </tr>
                    </thead>
                    <tbody>
-
+						<s:iterator value="#request.equipment" var="equipment">
+                    		<tr>
+                    			<td>
+                    				<div class="equipmentDetails">
+                    					<s:property value="#equipment.equipmentName"/>
+                    				</div>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentLocation"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.rentRate"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentAccount"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.idleNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.rentedNumber"/>
+                    				</p>
+                    			</td>
+                    		</tr>
+                    	</s:iterator>
                    </tbody>
                </table>
             </div>
@@ -77,6 +111,10 @@
           <input id="equipment_query_name" type="text" name="">
         </p>
         <p>
+          <label for="equipment_query_type">器材类型</label>
+          <input id="equipment_query_type" type="text" name="">
+        </p>
+        <p>
           <label for="equipment_query_location">器材位置</label>
           <input id="equipment_query_location" type="text" name="">
         </p>
@@ -92,7 +130,7 @@
         </p>
         <p>
           <label for="equipment_rent_number">器材数量</label>
-          <input id="equipment_rent_number" type="text" name="equipmentRentVo.rentNumber">
+          <input id="equipment_rent_number" type="text" name="equipmentRentVo.rentNumber" placeholder="">
         </p>
         <p>
           <label for="equipment_rent_borrow">借出时间</label>
@@ -104,7 +142,7 @@
         </p>
         <p>
           <label for="equipment_rent_rate">器材租金</label>
-          <input id="equipment_rent_rate" type="text" name="" disabled="disabled">
+          <input id="equipment_rent_rate" type="text" name="equipmentRentVo.totalRent" value="<%=request.getParameter("rentRate") %>>" readonly>
         </p>
     </form>
 

@@ -43,14 +43,16 @@
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-12 col-sm-9">
                 <table class="table table-bordered table-hover">
-                  
                    <thead>
                         <caption>器材管理</caption>
                         <tr>
                             <th>器材名称</th>
-                            <th>闲置数量</th>
                             <th>器材位置</th>
                             <th>器材租金</th>
+                            <th>总数量</th>
+                            <th>闲置数量</th>
+                            <th>已借数量</th>
+                            <th>维修数量</th>
                             <th>是否删除</th>
                         </tr>
                    </thead>
@@ -61,11 +63,6 @@
                     				<div class="equipmentDetails">
                     					<s:property value="#equipment.equipmentName"/>
                     				</div>
-                    			</td>
-                    			<td>
-                    				<p>
-                    					<s:property value="#equipment.equipmentAccount"/>
-                    				</p>
                     			</td>
                     			<td>
                     				<p>
@@ -83,7 +80,23 @@
                     				</p>
                     			</td>
                     			<td>
-                    				<a href="equipmentAction_delete?equipmentVo.equipmentNubmer=<s:property value='#equipment.equipmentNubmer'/>">
+                    				<p>
+                    					<s:property value="#equipment.idleNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.rentedNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.repairNumber"/>
+                    				</p>
+                    			</td>
+                    			
+                    			<td>
+                    				<a href="equipmentAction_delete?equipmentVo.equipmentNumber=<s:property value='#equipment.equipmentNumber'/>">
                     					删除
                     				</a>
                     			</td>
@@ -97,8 +110,8 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
                     <a id="equipment_add_a" href="#" class="list-group-item">购置新添</a>
-                    <a id="equipment_repair_a" href="equipment_repair.jsp" class="list-group-item">维修情况</a>
-                    <a id="equipment_rent_a" href="equipment_rent.jsp" class="list-group-item">租借情况</a>
+                    <a id="equipment_repair_a" href="equipmentRepairAction_detail" class="list-group-item">维修情况</a>
+                    <a id="equipment_rent_a" href="equipmentRentAction_detail" class="list-group-item">租借情况</a>
                </div>
             </div>
         </div>
@@ -135,15 +148,15 @@
     <form id="equipment_query">
         <p>
           <label for="equipment_query_name">器材名称</label>
-          <input id="equipment_query_name" type="text" name="">
+          <input id="equipment_query_name" type="text" name="equipmentVo.equipmentName">
         </p>
         <p>
           <label for="equipment_query_type">器材类型</label>
-          <input id="equipment_query_type" type="text" name="">
+          <input id="equipment_query_type" type="text" name="equipmentVo.equipmentType">
         </p>
         <p>
           <label for="equipment_query_location">器材位置</label>
-          <input id="equipment_query_location" type="text" name="">
+          <input id="equipment_query_location" type="text" name="equipmentVo.equipmentLocation">
         </p>
         <p>
           <label for="equipment_query_canuse">可用状态</label>

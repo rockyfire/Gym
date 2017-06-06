@@ -16,7 +16,6 @@ public class RoleResource implements Serializable{
 	private List<Role> roles = new ArrayList<>();
 
 	public RoleResource() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	

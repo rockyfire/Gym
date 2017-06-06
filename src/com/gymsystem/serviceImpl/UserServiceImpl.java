@@ -37,35 +37,34 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public boolean login(UserVo userVo) {
-		User user = UserDao.getUserByName(userVo.getUsername());
+		User user = UserDao.getUserByName(userVo.getUserName());
 		try {
-			if (user!=null && userVo.getPassword().equals(user.getPassword())) {
+			if (user!=null&&userVo.getPassword()==user.getPassword()) {
 				return true;
-			}else{
-				return false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "NO login";
+			msg = "µÇÂ½Ê§°Ü";
 			return false;
 		}
+		return false;
 	}
 
 	@Override
 	public boolean regist(UserVo userVo) {
-		User user = UserDao.getUserByName(userVo.getUsername());
+		User user = UserDao.getUserByName(userVo.getUserName());
 		User user2;
 		if (user!=null) {
-			msg = "ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½";
+			msg = "¸ÃÓÃ»§ÒÑ¾­´æÔÚ";
 			return false;
 		}else{
-			//ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
+			//ÓÃ»§±àºÅ×é³ÉÎª£º
 			String userNubmer = MyUtil.createUserNumber();
 			
 			for(;UserDao.getUserByNumber(userNubmer)!=null;userNubmer = MyUtil.createUserNumber()){
-				msg = "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½";
+				msg = "ÓÃ»§±àºÅÖØ¸´";
 			}
-			user2 = new User(userNubmer, userVo.getUsername(), userVo.getPassword());
+			user2 = new User(userNubmer, userVo.getUserName(), userVo.getPassword());
   			try {
   				UserDao.addUser(user2);
 			} catch (Exception e) {
@@ -84,7 +83,7 @@ public class UserServiceImpl implements UserService{
 		User user = UserDao.getUserByNumber(userVo.getUserNubmer());
 		UserMessage userMessage = user.getUserMessage();
 		
-		user.setUsername(userVo.getUsername());
+		user.setUsername(userVo.getUserName());
 		user.setUserNumber(userVo.getUserNubmer());
 		
 		userMessage.setAddress(userVo.getLocation());
@@ -92,7 +91,7 @@ public class UserServiceImpl implements UserService{
 		userMessage.seteMail(userVo.getEmail());
 		userMessage.setGrade(userVo.getGrade());
 		userMessage.setIDNumber(userVo.getIDNumber());
-		userMessage.setUsername(userVo.getUsername());
+		userMessage.setUserName(userVo.getUserName());
 		userMessage.setUserNumber(userVo.getUserNubmer());
 		try {
 			UserDao.update(user);
@@ -114,7 +113,7 @@ public class UserServiceImpl implements UserService{
 		userMessage.setGrade(userMessageVo.getGrade());
 		userMessage.setIDNumber(userMessageVo.getIDNumber());
 		userMessage.setUserNumber(userMessageVo.getUserNubmer());
-		userMessage.setUsername(userMessageVo.getName());
+		userMessage.setUserName(userMessageVo.getName());
 		try {
 			userMessageDao.update(userMessage);
 			return true;
@@ -128,10 +127,10 @@ public class UserServiceImpl implements UserService{
 		User user = UserDao.getUserByNumber(userVo.getUserNubmer());
 		if (user!=null) {
 			UserDao.delete(user.getUser_id());
-			msg = "É¾ï¿½ï¿½É¹ï¿½";
+			msg = "É¾³ý³É¹¦";
 			return true;
 		}else{
-			msg = "Ã»ï¿½Ð¸ï¿½ï¿½Ã»ï¿½";
+			msg = "Ã»ÓÐ¸ÃÓÃ»§";
 			return false;
 		}
 	}
@@ -143,7 +142,7 @@ public class UserServiceImpl implements UserService{
 		for(User user:users){
 			UserVo userVo = new UserVo();
 			userVo.setPassword(user.getPassword());
-			userVo.setUsername(user.getUsername());
+			userVo.setUserName(user.getUsername());
 			userVo.setUserNubmer(user.getUserNumber());
 			userVos.add(userVo);
 		}
@@ -164,7 +163,7 @@ public class UserServiceImpl implements UserService{
 		}
 			userVo.setPassword(user.getPassword());
 			userVo.setName(user.getUsername());
-			userVo.setUsername(user.getUsername());
+			userVo.setUserName(user.getUsername());
 			userVo.setUserNubmer(userMessage.getUserNumber());
 			userVo.setBornDate(userMessage.getBornDay());
 			userVo.setEmail(userMessage.geteMail());
@@ -179,11 +178,11 @@ public class UserServiceImpl implements UserService{
 	public boolean addUser(UserVo userVo) {
 		return regist(userVo);
 	}
-///////////////////////////////Î´ï¿½ï¿½ï¿½
+///////////////////////////////Î´Íê³É
 	@Override
 	public List<UserVo> queryUser(UserVo userVo) {
 		User user = new User();
-		user.setUsername(userVo.getUsername());
+		user.setUsername(userVo.getUserName());
 		user.setPassword(userVo.getPassword());
 		UserDao.queryUsers(user);
 		return null;
@@ -191,25 +190,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void updateUserAuthority(String[]rolesNumber, String userNumber) {
-		User user = UserDao.getUserByNumber(userNumber);
-		List<Role> roles = user.getRoles();
+		
 		for(int i=0;i<rolesNumber.length;i++){
+			User user = UserDao.getUserByNumber(userNumber);
 			Role role = roledao.getRoleByNumber(rolesNumber[i]);
-			roles.add(role);
+			user.getRoles().add(role);
+			role.getUsers().add(user);
+			roledao.update(role);
+			UserDao.update(user);
 		}
-		UserDao.update(user);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	public UserDao getUserDao() {

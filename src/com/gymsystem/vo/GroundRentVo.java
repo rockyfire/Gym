@@ -5,6 +5,7 @@ import java.util.Date;
 public class GroundRentVo {
 
 	private String groundNumber;
+	private String groundRentNumber;
 	private String description;			//使用情况描述
 	private Date   rentTime;
 	private Date   returnTime;
@@ -20,10 +21,13 @@ public class GroundRentVo {
 	}
 	
 	
-	public GroundRentVo(String groundNumber, String description, Date rentTime, Date returnTime, String leaseHolder,
-			long rentRate, String location, boolean canUser, String type) {
+	
+
+	public GroundRentVo(String groundNumber, String groundRentNumber, String description, Date rentTime,
+			Date returnTime, String leaseHolder, long rentRate, String location, boolean canUser, String type) {
 		super();
 		this.groundNumber = groundNumber;
+		this.groundRentNumber = groundRentNumber;
 		this.description = description;
 		this.rentTime = rentTime;
 		this.returnTime = returnTime;
@@ -34,6 +38,14 @@ public class GroundRentVo {
 		this.type = type;
 	}
 
+
+	public String getGroundRentNumber() {
+		return groundRentNumber;
+	}
+	
+	public void setGroundRentNumber(String groundRentNumber) {
+		this.groundRentNumber = groundRentNumber;
+	}
 
 	public String getGroundNumber() {
 		return groundNumber;
@@ -89,12 +101,18 @@ public class GroundRentVo {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+
+
+
 	@Override
 	public String toString() {
-		return "GroundRentVo [groundNumber=" + groundNumber + ", description=" + description + ", rentTime=" + rentTime
-				+ ", returnTime=" + returnTime + ", leaseHolder=" + leaseHolder + ", rentRate=" + rentRate
-				+ ", location=" + location + ", canUser=" + canUser + ", type=" + type + "]";
+		return "GroundRentVo [groundNumber=" + groundNumber + ", groundRentNumber=" + groundRentNumber
+				+ ", description=" + description + ", rentTime=" + rentTime + ", returnTime=" + returnTime
+				+ ", leaseHolder=" + leaseHolder + ", rentRate=" + rentRate + ", location=" + location + ", canUser="
+				+ canUser + ", type=" + type + "]";
 	}
+	
 	
 	
 	

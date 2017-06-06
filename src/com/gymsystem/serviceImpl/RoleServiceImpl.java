@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.gymsystem.dao.RoleDao;
+import com.gymsystem.dao.UserDao;
 import com.gymsystem.po.Role;
 import com.gymsystem.po.RoleResource;
 import com.gymsystem.po.User;
@@ -21,25 +22,76 @@ public class RoleServiceImpl implements RoleService{
 
 	@Resource
 	private RoleDao roleDao;
+	@Resource
+	private UserDao userDao;
 	
 	@Override
-	public List<RoleVo> getRoles(String userNumber) {
+	public RoleVo getRoleByNumber(String roleNumber) {
+		Role role = roleDao.getRoleByNumber(roleNumber);
+		RoleVo roleVo = new RoleVo();
+		if (role!=null) {
+			roleVo.setRoleName(role.getRoleName());
+			roleVo.setRoleNumber(role.getRoleNumber());
+			roleVo.setDescription(role.getDescription());
+			return roleVo;
+		}else {
+			return null;
+		}
+	}
+	
+	
+	@Override
+	public List<RoleVo> getRoles() {
+
 		try {
 			List<RoleVo> roleVos = new ArrayList<>();
 			List<Role>roles = roleDao.query();
+			System.out.println("roles size is "+ roles.size());
+			for(Role role:roles){
+				RoleVo roleVo = new RoleVo();
+				roleVo.setRoleName(role.getRoleName());
+				roleVo.setRoleNumber(role.getRoleNumber());
+				roleVo.setDescription(role.getDescription());
+				roleVos.add(roleVo);
+			}
+			System.out.println(roleVos.toString());
+			return roleVos;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	
+	@Override
+	public List<RoleVo> getRoles(String userNumber) {
+		System.out.println("roleServiceImpl userNumber is "+ userNumber);
+		try {
+			List<RoleVo> roleVos = new ArrayList<>();
+			List<Role>roles = roleDao.query();
+			System.out.println("roles size is "+ roles.size());
 			for(Role role:roles){
 				RoleVo roleVo = new RoleVo();
 				roleVo.setRoleName(role.getRoleName());
 				roleVo.setRoleNumber(role.getRoleNumber());
 				
 				List<User>users = role.getUsers();
+				
+				System.out.println("users.size() is "+users.size());
+				
+				
 				for(User user1:users){
-					if (userNumber.equals(user1.getUserNumber())) {
-						roleVo.setUserNumber(userNumber);
+					if (user1!=null) {
+						if (userNumber.equals(user1.getUserNumber())) {
+							roleVo.setUserNumber(userNumber);
+						}
 					}
 				}
+				
+				System.out.println("userNumber   "+roleVo.getUserNumber());
 				roleVos.add(roleVo);
 			}
+			System.out.println(roleVos.toString());
 			return roleVos;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +99,7 @@ public class RoleServiceImpl implements RoleService{
 		}
 	}
 
+	
 	@Override
 	public boolean addRole(RoleVo roleVo) {
 		Role role = new Role();
@@ -61,12 +114,15 @@ public class RoleServiceImpl implements RoleService{
 		}
 	}
 
+	
+	
 	@Override
 	public boolean updateRole(RoleVo roleVo) {
 		Role role = roleDao.getRoleByNumber(roleVo.getRoleNumber());
 		if (role!=null) {
 			try {
 			role.setRoleName(roleVo.getRoleName());
+			role.setDescription(roleVo.getDescription());
 			roleDao.update(role);
 			return true;
 		} catch (Exception e) {
@@ -81,14 +137,21 @@ public class RoleServiceImpl implements RoleService{
 	@Override
 	public boolean deleteRole(RoleVo roleVo) {
 		Role role = roleDao.getRoleByNumber(roleVo.getRoleNumber());
+		List<User> users = role.getUsers();
+		
+		for(User user:users){
+			user.getRoles().remove(role);
+			userDao.update(user);
+		}
+		
 		if (role!=null) {
 			try {
 				roleDao.delete(role.getRole_id());
 				return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
 		}else{
 			return false;
 		}

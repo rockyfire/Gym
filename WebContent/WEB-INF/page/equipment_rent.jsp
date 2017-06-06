@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +30,7 @@
                     <li><a href="main.jsp">首页</a></li>
                     <li><a id="game" href="game.jsp">赛事管理</a></li>
                     <li><a id="ground" href="ground.jsp">场地管理</a></li>
-                    <li class="active"><a id="equipment" href="equipment.jsp">器材管理</a></li>
+                    <li class="active"><a id="equipment" href="equipmentAction_detail">器材管理</a></li>
                     <li><a id="trace" href="trace.jsp">财务管理</a></li>
                     <li><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
                     <li><a id="notice" href="notice.jsp">公告管理</a></li>
@@ -54,11 +55,48 @@
                             <th>借出时间</th>
                             <th>归还时间</th>
                             <th>器材租金</th>
-                            <th>用途详情</th>
                         </tr>
                     </thead>
                     <tbody>
-
+						<s:iterator value="#request.equipmentRent" var="equipment">
+                    		<tr>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentRentNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentName"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.rentNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.leaseHolder"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.rentTime"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.returnTime"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.totalRent"/>
+                    				</p>
+                    			</td>
+                    		</tr>
+                    	</s:iterator>
                     </tbody>
                 </table>
             </div>
@@ -67,7 +105,7 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
                     <a id="equipment_add_a" href="#" class="list-group-item">购置新添</a>
-                    <a id="equipment_repair_a" href="equipment_repair.jsp" class="list-group-item">维修情况</a>
+                    <a id="equipment_repair_a" href="equipmentRepairAction_detail" class="list-group-item">维修情况</a>
                     <a id="equipment_rent_a" href="#" class="list-group-item">租借情况</a>
                </div>
             </div>

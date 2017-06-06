@@ -25,13 +25,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="main.jsp">首页</a></li>
-                    <li><a id="game" href="game.jsp">赛事管理</a></li>
-                    <li><a id="ground" href="ground.jsp">场地管理</a></li>
-                    <li><a id="equipment" href="equipment.jsp">器材管理</a></li>
-                    <li><a id="trace" href="trace.jsp">财务管理</a></li>
-                    <li class="active"><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
-                    <li><a id="notice" href="notice.jsp">公告管理</a></li>
+                    <li><a href="main.html">首页</a></li>
+                    <li><a id="game" href="game.html">赛事管理</a></li>
+                    <li><a id="ground" href="ground.html">场地管理</a></li>
+                    <li><a id="equipment" href="equipment.html">器材管理</a></li>
+                    <li><a id="trace" href="trace.html">财务管理</a></li>
+                    <li class="active"><a id="usermanager" href="usermanager.html">用户管理</a></li>
+                    <li><a id="notice" href="notice.html">公告管理</a></li>
                     <li><a id="" href="">工作人员安排</a></li>
                </ul>
             </div>
@@ -50,11 +50,22 @@
                     
                     <script type="text/javascript">
                     $(function(){
+                    	
+                    	$("#shutdown").click(function () {
+                    		$("#roleList").children().remove();
+						});
+                    	
+                    	$("#role_submit").click(function () {
+                    		$("#roleUpdate").submit();
+                    		$("#roleList").children().remove();
+						});
+                    	
+                    	
                         //按钮单击时执行           
-                        $("div.btn_roles").click(function(){
+                        $(".btnRoles").click(function(){
                         	var userNumber = $(this).next().val();
                         	userNumber = userNumber.trim(userNumber);
-                        	//alert(userNumber);
+                        	alert(userNumber);
                              $.ajax({
                                type: "GET",
                                url: "roleAction_getUserRoles",
@@ -62,7 +73,21 @@
                                async: false,
                 			   dataType: "json",
                 			   success:function(data){
-                				   alert(data.userNumber+"success");
+                				   var html = $("#roleList");
+                				   $("#hiddenUserNumber").val(userNumber);
+                				   for (var i = 0; i < data.length; i++) {
+									var check="";
+                					   if (data[i].userNumber==userNumber) {
+										check = " checked='checked'";
+									}
+                				    var row = "<tr><td>"
+      					   			+data[i].roleName+
+      					   			"</td><td><input type='checkbox' name='roleNumbers' value='"
+      					   			+data[i].roleNumber+"'"+check+
+      					   			"></td></tr>";	
+      					   			html.append(row);
+      					   			//alert(row);
+								};
                 			   },
                 			   error:function(XMLHttpRequest, textStatus, errorThrown){
                 				   alert("错误");
@@ -77,7 +102,7 @@
                             <tr>
                                 <th>用户编号</th>
                                 <th>用户名称</th>
-                                <th><button type="button" class="btn btn-default"
+                                <th><button class="btn btn-default"
                                             data-toggle="modal" data-target="#role_update">
                                   		  角色修改</button>
                                 </th>
@@ -88,8 +113,11 @@
                             		<tr>
                             			<td><div><s:property value="#user.userNubmer"/></div></td>
                             			<td><div><s:property value="#user.userName"/></div></td>
-                            			<td><div class="btn_roles" data-toggle="modal" data-target="#role_update">
-                                  		  角色修改</div><input type="hidden" value="<s:property value='#user.userNubmer'/>">
+                            			<td>
+                            				<div class="btnRoles" data-toggle="modal" data-target="#role_update">
+                                  		 		 角色修改
+                                  		 	</div>
+                                  		 	<input type="hidden" value="<s:property value='#user.userNubmer'/>">
                                			</td>
                             		</tr>
                             	</s:iterator>
@@ -105,8 +133,8 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="" class="list-group-item">用户查询</a>
                     <a id="" data-toggle="modal" data-target="#add_user" class="list-group-item">新增用户</a>
-                    <a id="" href="#" class="list-group-item">权限管理</a>
-                    <a id="" href="usermanager_role.jsp" class="list-group-item">角色管理</a>
+                    <a id="" href="userAction_userAuthority" class="list-group-item">权限管理</a>
+                    <a id="" href="roleAction_toRoleManage" class="list-group-item">角色管理</a>
                </div>
             </div>
         </div>
@@ -124,24 +152,24 @@
                 </div>
                 
                 
-                <form action="roleAction_updateRoles" method="get">
+                <form id="roleUpdate" action="roleAction_updateUserRoles" method="get">
                     <div class="modal-body">
-                        <input type="hidden" name="userNumber" value="<s:property value='#userNumber'/>">
+                        <input id="hiddenUserNumber" type="hidden" name="userNumber" value="<s:property value='#userNumber'/>">
                         <table class="table table-bordered table-responsive table-striped">
-                            <tbody>
+                            <tbody id="roleList">
                             <tr>
                                 <td>角色</td>
                                 <td>选中</td>
                             </tr>
-                            <tr>
-                                <td>角色</td>
-                                <td><input type="checkbox" name="roleNumbers" value="" checked="checked"></td>
-                            </tr>
+                            
                             </tbody>
                         </table>
                     </div>
+                    
+                    <s:submit value="提交" id="role_submit"></s:submit>
+                    
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="shutdown" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         <button type="button" class="btn btn-primary">保存</button>
                     </div>
                 </form>

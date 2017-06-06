@@ -14,14 +14,22 @@
         <property name="roleNumber" type="java.lang.String">
             <column name="ROLENUMBER" />
         </property>
-        <list name="roleResources" inverse="false" table="ROLERESOURCE" lazy="true" cascade="save-update">
+       <!--  <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property> -->
+        
+        
+        <list name="roleResources" inverse="false" lazy="false" cascade="save-update">
             <key>
                 <column name="ROLE_ID" />
             </key>
             <list-index></list-index>
-            <one-to-many class="com.gymsystem.po.RoleResource" />
+            <many-to-many column="ROLERESOURCE_ID" class="com.gymsystem.po.RoleResource" />
         </list>
-        <list name="users" inverse="true" lazy="false" cascade="save-update">
+        
+        
+        
+        <list name="users" lazy="false" cascade="save-update">
             <key>
                 <column name="ROLE_ID" />
             </key>

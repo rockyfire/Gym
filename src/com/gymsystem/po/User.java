@@ -18,12 +18,12 @@ public class User implements Serializable{
 	private String username;
 	private String password;
 	
-	private UserMessage userMessage; 	//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢
-	private List<Role> roles = new ArrayList<>();					//ï¿½Ã»ï¿½ï¿½ï¿½É«
- 	private List<EquipmentRent> equipmentRents = new ArrayList<>(); //ï¿½ï¿½ï¿½ï¿½
- 	private List<GroundRent> groundRents = new ArrayList<>();		//ï¿½ï¿½ï¿½ï¿½
- 	private List<AnnounceComment> announceComments = new ArrayList<>();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
- 	private List<Announcement> announcements = new ArrayList<>(); 	//ï¿½ï¿½ï¿½ï¿½
+	private UserMessage userMessage; 	//Á¬½ÓÓÃ»§ÏêÏ¸ÐÅÏ¢
+	private List<Role> roles = new ArrayList<>();					//ÓÃ»§½ÇÉ«
+ 	private List<EquipmentRent> equipmentRents = new ArrayList<>(); //Æ÷²Ä
+ 	private List<GroundRent> groundRents = new ArrayList<>();		//³¡µØ
+ 	private List<AnnounceComment> announceComments = new ArrayList<>();//¹«¸æÆÀÂÛ
+ 	private List<Announcement> announcements = new ArrayList<>(); 	//¹«¸æ
 	private List<GameApply> gameApplies = new ArrayList<>();
 	
 	
@@ -31,10 +31,13 @@ public class User implements Serializable{
 	}
 	
 	
+	
+
+
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", userNumber=" + userNumber + ", username=" + username + ", password="
-				+ password + ", userMessage=" + userMessage + ", roles=" + roles + ", equipmentRents=" + equipmentRents
+				+ password + ", userMessage=" + userMessage + ", roles=" + ", equipmentRents=" + equipmentRents
 				+ ", groundRents=" + groundRents + ", announceComments=" + announceComments + ", announcements="
 				+ announcements + ", gameApplies=" + gameApplies + "]";
 	}

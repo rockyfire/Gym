@@ -33,7 +33,6 @@ public class WorkManage implements Serializable {
 	private TradeCard tradeCard;
 	
 	public WorkManage() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html>0
 <head>
     <meta charset="UTF-8">
     <title>Equipment_repair</title>
@@ -28,7 +29,7 @@
                     <li><a href="main.jsp">首页</a></li>
                     <li><a id="game" href="game.jsp">赛事管理</a></li>
                     <li><a id="ground" href="ground.jsp">场地管理</a></li>
-                    <li class="active"><a id="equipment" href="equipment.jsp">器材管理</a></li>
+                    <li class="active"><a id="equipment" href="equipmentAction_detail">器材管理</a></li>
                     <li><a id="trace" href="trace.jsp">财务管理</a></li>
                     <li><a id="usermanager" href="usermanager.jsp">用户管理</a></li>
                     <li><a id="notice" href="notice.jsp">公告管理</a></li>
@@ -55,7 +56,46 @@
                         </tr>
                    </thead>
                    <tbody>
-                        <tr><td><a id="equipment_repair_apply_a" colspan="7" align="center" href="#">添加维修</a></td></tr>
+                   		<s:iterator value="#request.equipmentRepair" var="equipment">
+                    		<tr>
+                    			<td>
+                    				<div class="equipmentDetails">
+                    					<s:property value="#equipment.equipmentRepairNumber"/>
+                    				</div>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentName"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentTime"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.equipmentNumber"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.pay"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.workers"/>
+                    				</p>
+                    			</td>
+                    			<td>
+                    				<p>
+                    					<s:property value="#equipment.description"/>
+                    				</p>
+                    			</td>
+                    		</tr>
+                    	</s:iterator>
+                        <tr><td colspan="7" align="center"><a id="equipment_repair_apply_a"  href="#">添加维修</a></td></tr>
                    </tbody>
                </table>
             </div>
@@ -64,8 +104,8 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
                     <a id="equipment_add_a" href="#" class="list-group-item">购置新添</a>
-                    <a id="equipment_repair_a" href="equipment_repair.jsp" class="list-group-item">维修情况</a>
-                    <a id="equipment_rent_a" href="equipment_rent.jsp" class="list-group-item">租借情况</a>
+                    <a id="equipment_repair_a" href="#" class="list-group-item">维修情况</a>
+                    <a id="equipment_rent_a" href="equipmentRentAction_detail" class="list-group-item">租借情况</a>
                </div>
             </div>
         </div>
@@ -74,27 +114,27 @@
     <form id="equipment_repair_apply">
         <p>
           <label for="equipment_repair_apply_name">器材名称</label>
-          <input id="equipment_repair_apply_name" type="text" name="">
+          <input id="equipment_repair_apply_name" type="text" name="equipmentRepairVo.equipmentName">
         </p>
         <p>
           <label for="equipment_repair_apply_time">维修时间</label>
-          <input id="equipment_repair_apply_time" type="text" name="">
+          <input id="equipment_repair_apply_time" type="text" name="equipmentRepairVo.equipmentTime">
         </p>
         <p>
           <label for="equipment_repair_apply_rate">支出金额</label>
-          <input id="equipment_repair_apply_rate" type="text" name="">
+          <input id="equipment_repair_apply_rate" type="text" name="equipmentRepairVo.pay">
         </p>
         <p>
           <label for="equipment_repair_apply_admin">维修人员</label>
-          <input id="equipment_repair_apply_admin" type="text" name="">
+          <input id="equipment_repair_apply_admin" type="text" name="equipmentRepairVo.workers">
         </p>
         <p>
           <label for="equipment_repair_apply_number">器材数量</label>
-          <input id="equipment_repair_apply_number" type="text" name="">
+          <input id="equipment_repair_apply_number" type="text" name="equipmentRepairVo.equipmentNumber" placeholder="" />
         </p>
         <p>
           <label for="equipment_repair_apply_content">维修内容</label>
-          <textarea id="equipment_repair_apply_content"></textarea>
+          <textarea id="equipment_repair_apply_content" name="equipmentRepairVo.description"></textarea>
         </p>
     </form>
 
@@ -125,7 +165,7 @@
         </p>
         <p>
           <label for="equipment_add_description">器材说明</label>
-          <textarea id="equipment_add_description"></textarea>
+          <textarea id="equipment_add_description" name="description"></textarea>
         </p>
     </form>
 

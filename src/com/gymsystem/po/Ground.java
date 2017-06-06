@@ -10,6 +10,7 @@ public class Ground implements Serializable {
 	private String groundNumber;
 	private String type;
 	private String location;
+	private int    groundAccount;
 	private String groundName;
 	private String descript;		//场地说明
 	private boolean canUse;
@@ -23,13 +24,16 @@ public class Ground implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	@Override
 	public String toString() {
 		return "Ground [ground_id=" + ground_id + ", groundNumber=" + groundNumber + ", type=" + type + ", location="
-				+ location + ", groundName=" + groundName + ", descript=" + descript + ", canUse=" + canUse
-				+ ", groundRentRate=" + groundRentRate + ", groundRents=" + groundRents + ", groundRepaires="
-				+ groundRepaires + "]";
+				+ location + ", groundAccount=" + groundAccount + ", groundName=" + groundName + ", descript="
+				+ descript + ", canUse=" + canUse + ", groundRentRate=" + groundRentRate + ", groundRents="
+				+ groundRents + ", groundRepaires=" + groundRepaires + "]";
 	}
+
+
 	public Integer getGround_id() {
 		return ground_id;
 	}
@@ -45,6 +49,14 @@ public class Ground implements Serializable {
 		this.groundNumber = groundNumber;
 	}
 
+	public int getGroundAccount() {
+		return groundAccount;
+	}
+	
+	public void setGroundAccount(int groundAccount) {
+		this.groundAccount = groundAccount;
+	}
+	
 	public String getType() {
 		return type;
 	}
@@ -94,16 +106,19 @@ public class Ground implements Serializable {
 		this.groundRepaires = groundRepaires;
 	}
 
-	public Ground(String groundNumber, String type, String location, String groundName, String descript, boolean canUse,
-			long groundRentRate) {
+
+	public Ground(String groundNumber, String type, String location, int groundAccount, String groundName,
+			String descript, boolean canUse, long groundRentRate) {
 		super();
 		this.groundNumber = groundNumber;
 		this.type = type;
 		this.location = location;
+		this.groundAccount = groundAccount;
 		this.groundName = groundName;
 		this.descript = descript;
 		this.canUse = canUse;
 		this.groundRentRate = groundRentRate;
 	}
+
 	
 }

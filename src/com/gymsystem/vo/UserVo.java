@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserVo {
 
-	private String username;
+	private String userName;
 	private String password;
 	
 	private String userNubmer;
@@ -20,10 +20,10 @@ public class UserVo {
 	}
 
 
-	public UserVo(String username, String password, String userNubmer, String name, String location, Date bornDate,
+	public UserVo(String userName, String password, String userNubmer, String name, String location, Date bornDate,
 			String iDNumber, String studentId, String email, String grade) {
 		super();
-		this.username = username;
+		this.userName = userName;
 		this.password = password;
 		this.userNubmer = userNubmer;
 		this.name = name;
@@ -37,12 +37,12 @@ public class UserVo {
 
 
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {
@@ -119,7 +119,7 @@ public class UserVo {
 
 	@Override
 	public String toString() {
-		return "UserVo [username=" + username + ", password=" + password + ", userNubmer=" + userNubmer + ", name="
+		return "UserVo [userName=" + userName + ", password=" + password + ", userNubmer=" + userNubmer + ", name="
 				+ name + ", location=" + location + ", bornDate=" + bornDate + ", IDNumber=" + IDNumber + ", studentId="
 				+ studentId + ", email=" + email + ", grade=" + grade + "]";
 	}

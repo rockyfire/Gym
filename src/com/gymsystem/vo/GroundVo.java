@@ -12,7 +12,6 @@ public class GroundVo {
 	private int    groundAccount;	//场地数量
 	
 	public GroundVo() {
-		// TODO Auto-generated constructor stub
 	}
 
 	

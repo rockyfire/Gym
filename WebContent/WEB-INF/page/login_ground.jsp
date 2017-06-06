@@ -28,16 +28,16 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a id="gym" href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-                    <li><a id="match" href="login_game.jsp">体育赛事</a></li>
+                    <li><a id="gym" href="${pageContext.request.contextPath}/index.html">首页</a></li>
+                    <li><a id="match" href="login_game.html">体育赛事</a></li>
                     <li class="active"><a id="ground" href="#">场地详情</a></li>
-                    <li><a id="equipment" href="login_equipment.jsp">闲置器材</a></li>
-                    <li><a id="resource" href="my_resource.jsp">我的资源</a></li>
-                    <li><a id="notice" href="login_notice.jsp">公告通知</a></li>
-                    <li><a id="connection" href="connection.jsp">联系我们</a></li>
-                    <li><a id="personal" href="personal.jsp">个人资料</a></li>
+                    <li><a id="equipment" href="login_equipment.html">闲置器材</a></li>
+                    <li><a id="resource" href="my_resource.html">我的资源</a></li>
+                    <li><a id="notice" href="login_notice.html">公告通知</a></li>
+                    <li><a id="connection" href="connection.html">联系我们</a></li>
+                    <li><a id="personal" href="personal.html">个人资料</a></li>
                 </ul>
-                <div id="personal_information"><a href="${pageContext.request.contextPath}/index.jsp">退出登录</a></div>
+                <div id="personal_information"><a href="${pageContext.request.contextPath}/index.html">退出登录</a></div>
             </div>
         </div>
     </nav>

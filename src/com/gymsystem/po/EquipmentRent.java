@@ -8,12 +8,19 @@ import javax.persistence.Table;
 @Table(name = "t_EQUIPMENTRENT")
 public class EquipmentRent implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Integer equipmentRent_id;
+
+	private int account;
 
 	private Date rentTime;
 	private Date returnTime;
-	private String rentRate;
-	private int account;
+	private Double rentRate;
+
 	private String canUse;
 	private String usage;
 
@@ -26,17 +33,13 @@ public class EquipmentRent implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EquipmentRent(Integer equipmentRent_id, Date rentTime,
-			Date returnTime, String rentRate, int account, String canUse,
-			String usage) {
+	public EquipmentRent(int account, Date rentTime, Date returnTime,
+			Double rentRate) {
 		super();
-		this.equipmentRent_id = equipmentRent_id;
+		this.account = account;
 		this.rentTime = rentTime;
 		this.returnTime = returnTime;
 		this.rentRate = rentRate;
-		this.account = account;
-		this.canUse = canUse;
-		this.usage = usage;
 	}
 
 	@Override
@@ -73,11 +76,11 @@ public class EquipmentRent implements Serializable {
 		this.returnTime = returnTime;
 	}
 
-	public String getRentRate() {
+	public Double getRentRate() {
 		return rentRate;
 	}
 
-	public void setRentRate(String rentRate) {
+	public void setRentRate(Double rentRate) {
 		this.rentRate = rentRate;
 	}
 

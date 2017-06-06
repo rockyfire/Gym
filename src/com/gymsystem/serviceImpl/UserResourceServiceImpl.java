@@ -1,5 +1,7 @@
 package com.gymsystem.serviceImpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -9,15 +11,15 @@ import com.gymsystem.po.RoleResource;
 import com.gymsystem.service.RoleResourceService;
 import com.gymsystem.util.MyUtil;
 import com.gymsystem.vo.AuthorityVo;
+import com.gymsystem.vo.RoleResourceVo;
 
-@Service("roleResourceServiceImpl")
-public class UserResourceServiceImpl implements RoleResourceService{
+
+public class UserResourceServiceImpl{
 
 	
 	@Resource
 	private RoleResourceDao roleResouceDao;
 	
-	@Override
 	public boolean addRoleResource(AuthorityVo authorityVo) {
 		RoleResource roleResource = new RoleResource();
 		
@@ -33,5 +35,7 @@ public class UserResourceServiceImpl implements RoleResourceService{
 			return false;
 		}
 	}
+
+	
 
 }

@@ -14,7 +14,7 @@
         <property name="returnTime" type="java.util.Date">
             <column name="tRETURNTIME" />
         </property>
-        <property name="rentRate" type="java.lang.String">
+        <property name="rentRate" type="double">
             <column name="tRENTRATE" />
         </property>
         <property name="account" type="int">
@@ -26,10 +26,10 @@
         <property name="usage" type="java.lang.String">
             <column name="tUSAGE" />
         </property>
-        <many-to-one name="user" class="com.gymsystem.po.User" fetch="join" cascade="save-update">
+        <many-to-one name="user" class="com.gymsystem.po.User" fetch="join"  lazy="false" cascade="save-update">
             <column name="USER" />
         </many-to-one>
-        <many-to-one name="equipment" class="com.gymsystem.po.Equipment" fetch="join" cascade="save-update">
+        <many-to-one name="equipment" class="com.gymsystem.po.Equipment" fetch="join" lazy="false" cascade="save-update">
             <column name="EQUIPMENT" />
         </many-to-one>
         <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>

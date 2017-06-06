@@ -35,14 +35,18 @@ public class BaseDaoImpl <T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@Override
 	public void update(T object) {
-		this.getHibernateTemplate().update(object);
+		this.getHibernateTemplate().merge(object);
 	}
 
 	@Override
 	public void delete(Integer id) {
 		System.out.println(clazz.getSimpleName());
-		String hql = "delete "+clazz.getSimpleName()+" as c where c.id=:id";
-		getSession().createQuery(hql).setInteger("id", id).executeUpdate();
+		
+		T entity = get(id);
+		this.getHibernateTemplate().delete(entity);
+		
+//		String hql = "delete "+clazz.getSimpleName()+" as c where c.id=:id";
+//		getSession().createQuery(hql).setInteger("id", id).executeUpdate();
 	}
 
 	@SuppressWarnings("unchecked")

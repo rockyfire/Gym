@@ -9,24 +9,29 @@ public class Role implements Serializable{
 	private Integer role_id;
 	private String roleName;
 	private String roleNumber;
+	private String description;
 	
 	private List<RoleResource> roleResources 		//连接多个资源
 			= new ArrayList<>();	
 	private List<User> users = new ArrayList<>();	//一个角色被多个用户引用
 	
 	public Role() {
-		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
+
 	@Override
 	public String toString() {
-		return "Role [role_id=" + role_id + ", roleName=" + roleName + ", roleNumber=" + roleNumber + ", roleResources="
-				+ roleResources + ", users=" + users + "]";
+		return "Role [role_id=" + role_id + ", roleName=" + roleName + ", roleNumber=" + roleNumber + ", description="
+				+ description + ", roleResources=" + roleResources + ", users=" + users + "]";
 	}
 
 
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public String getRoleNumber() {
 		return roleNumber;
@@ -61,11 +66,11 @@ public class Role implements Serializable{
 		this.users = users;
 	}
 
-	public Role(String roleName, String roleNumber) {
+	public Role(String roleName, String roleNumber, String description) {
 		super();
 		this.roleName = roleName;
 		this.roleNumber = roleNumber;
+		this.description = description;
 	}
-	
 	
 }
