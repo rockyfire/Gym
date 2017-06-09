@@ -57,7 +57,7 @@
                             <th>器材租金</th>
                             <th>归还说明</th>
                             <th>联系用户</th>
-                            <th>备注</th>
+                            <th>审核</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -107,6 +107,11 @@
                     				<p>
                     					<s:property value="#equipment.connection"/>
                     				</p>
+                    			</td>
+                    			<td>
+                    				<a href="equipmentRentAction_checkReturn?equipmentRentVo.equipmentRentNumber=<s:property value='#equipment.equipmentRentNumber'/>">
+                    					通过
+                    				</a>
                     			</td>
                     		</tr>
                     	</s:iterator>

@@ -31,7 +31,7 @@ public interface EquipmentService {
 	
 	public List<EquipmentRentVo> getEquipmentRent_detail(String username);
 	
-	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo);
+	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo,String usage);
 
 	public List<EquipmentRentVo> getDetailReturns();
 	

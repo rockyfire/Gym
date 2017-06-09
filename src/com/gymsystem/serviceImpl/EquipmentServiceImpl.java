@@ -253,6 +253,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 					equipmentRent.getReturnTime(),
 					equipmentRent.getRentRate()
 					);
+			equipmentRentVo.setCheckout(equipmentRent.getUsage());
 			equipmentRentVos.add(equipmentRentVo);
 		}
 		return equipmentRentVos;
@@ -260,12 +261,30 @@ public class EquipmentServiceImpl implements EquipmentService {
 	
 	//器材归还上报
 	@Override
-	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo) {
+	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo,String usage) {
 		// TODO Auto-generated method stub
 		EquipmentRent equipmentRent=(EquipmentRent)equipmentRentDao.getEquipmentByNumber(Integer.parseInt(equipmentRentVo.getEquipmentRentNumber()));
-		equipmentRent.setUsage("1"); //改变状态
-		equipmentRent.setReason(equipmentRentVo.getReason());
-		equipmentRent.setConnection(equipmentRentVo.getConnection());
+		equipmentRent.setUsage(usage); //改变状态
+		
+		String equipmentName=equipmentRent.getEquipment().getName();
+		System.out.print(equipmentName+"*******************");
+		if(usage.equals("1")){
+			equipmentRent.setReason(equipmentRentVo.getReason());
+			equipmentRent.setConnection(equipmentRentVo.getConnection());
+		}
+		if (usage.equals("2")) {
+			Equipment equipment=equipmentDao.getEquipmentByName(equipmentName).get(0);
+			// 归还器材数量
+			int rentedNumber=equipment.getRentedNumber()- equipmentRent.getAccount();
+			int totalNoIdleNumber = rentedNumber + equipment.getRepairNumber();
+			idleNumber = equipment.getAccountNumber() - totalNoIdleNumber;
+			if (totalNoIdleNumber <= equipment.getAccountNumber()) {
+				equipment.setNumber(idleNumber);
+				equipment.setRentedNumber(rentedNumber);
+			}
+			equipmentDao.update(equipment);
+			equipmentRent.setEquipment(equipment);
+		}
 		equipmentRentDao.update(equipmentRent);
 		return true;
 	}

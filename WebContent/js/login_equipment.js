@@ -4,7 +4,7 @@ $(function() {
 	var number = $("input[name='equipmentRentVo.rentNumber']");
 	var strRents = $("input[name='equipmentRentVo.rentTime']");
 	var strReturns = $("input[name='equipmentRentVo.returnTime']");
-	var totalRent 
+	var totalRent;
 	equipName.blur(
 			function() {
 				$.getJSON("jsonAction_ajaxJson", {
@@ -118,6 +118,7 @@ $(function() {
 		},
 		close : function(event, ui) {
 			window.location.reload();
+			
 		},
 		autoOpen : false,
 	});

@@ -86,7 +86,16 @@
                     				</p>
                     			</td>
                     			<td>
-                    				<button class="login_equipment_rent_return_a" value="<s:property value='#equipment.equipmentRentNumber'/>">归还</button>
+                    				<s:if test="#equipment.checkout==2">
+	                    				<button class="login_equipment_rent_return_a" value="<s:property value='#equipment.equipmentRentNumber'/>" disabled>
+	                    					已审核
+	                    				</button>
+                    				</s:if>
+                    				<s:if test="#equipment.checkout==0">
+	                    				<button class="login_equipment_rent_return_a" value="<s:property value='#equipment.equipmentRentNumber'/>">
+	                    					提交审核
+	                    				</button>
+                    				</s:if>
                     			</td>
                     		</tr>
                     	</s:iterator>

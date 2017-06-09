@@ -72,7 +72,6 @@ public class EquipmentDaoImpl extends BaseDaoImpl<Equipment> implements Equipmen
 	@Override
 	public List<Equipment> getEquipmentByName(String equipmentName) {
 		String hql = "from Equipment as e where e.name = ?";
-		@SuppressWarnings("unchecked")
 		List<Equipment> equipments = (List<Equipment>) this.getHibernateTemplate().find(hql, equipmentName);
 		if (equipments!=null&&equipments.size()>0) {
 			return equipments;

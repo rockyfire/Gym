@@ -32,7 +32,7 @@ public class EquipmentRentAction extends BaseAction<EquipmentRentVo> implements
 
 	// 确认归还
 	public String confirm() {
-		equipmentService.setEquipmentRentUsage(equipmentRentVo);
+		equipmentService.setEquipmentRentUsage(equipmentRentVo,"1");
 		return "confirm_success";
 	}
 
@@ -43,9 +43,9 @@ public class EquipmentRentAction extends BaseAction<EquipmentRentVo> implements
 		return "getDetailReturns_success";
 	}
 
-	// 管理员审核归还
+	// 管理员审核归还 | 通过
 	public String checkReturn() {
-
+		equipmentService.setEquipmentRentUsage(equipmentRentVo,"2");
 		return "check_success";
 	}
 

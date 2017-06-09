@@ -106,6 +106,8 @@
 			</result>
 			<result name="queryDetail_success">/WEB-INF/page/equipment_query.jsp
 			</result>
+			<result name="queryDetail_user_success">/WEB-INF/page/login_equipment_query.jsp</result>
+			<result name="query_user_success">/WEB-INF/page/login_equipment_query.jsp</result>
 			<result name="query_success">/WEB-INF/page/equipment_query.jsp
 			</result>
 		</action>
@@ -116,7 +118,7 @@
 			<result name="detailReturn_success">/WEB-INF/page/login_equipment_rent.jsp</result>
 			<result name="confirm_success" type="redirect">equipmentRentAction_detailRent</result>
 			<result name="getDetailReturns_success">/WEB-INF/page/equipment_return.jsp</result>
-			
+			<result name="check_success" type="redirect">equipmentRentAction_getDetailReturns</result>
 			<result name="addRent_success" type="redirect">equipmentRentAction_detail
 			</result>
 		</action>
@@ -128,11 +130,7 @@
 			</result>
 		</action>
 	
-         
-         
-         
-         
-         
+
     </package>
 
 </struts>
