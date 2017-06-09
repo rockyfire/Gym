@@ -184,12 +184,10 @@ public class Equipment implements Serializable {
 	}
 
 	// 查询器材 query Equipment
-	public Equipment(String name, String type, String location, boolean canUse) {
+	public Equipment(String name, String type) {
 		super();
 		this.name = name;
 		this.type = type;
-		this.location = location;
-		this.canUse = canUse;
 	}
 	
 	//更新器材

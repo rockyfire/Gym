@@ -2,6 +2,7 @@ package com.gymsystem.serviceImpl;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -99,9 +100,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 		// TODO Auto-generated method stub
 		Equipment equipment = new Equipment(
 				equipmentVo.getEquipmentName(),
-				equipmentVo.getEquipmentType(),
-				equipmentVo.getEquipmentLocation(), 
-				equipmentVo.isCanUse());
+				equipmentVo.getEquipmentType());
 		List<Equipment> equipmentlist = equipmentDao.queryEquipments(equipment);
 
 		List<EquipmentVo> equipmentVolist = new ArrayList<EquipmentVo>();
@@ -212,6 +211,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 
 		equipmentDao.update(equipment);
 		equipmentRent.setEquipment(equipment);
+		equipmentRent.setUsage("0"); //正在使用的状态 || 可以归还的状态
 
 		equipmentRentDao.addEquipmentRent(equipmentRent);
 		return true;
@@ -228,7 +228,7 @@ public class EquipmentServiceImpl implements EquipmentService {
 					equipments.getEquipmentRent_id() + "",
 					equipments.getEquipment().getName(),
 					equipments.getAccount(),
-					"rockyfire",// equipments.getUser().getUsername(),
+					equipments.getUser().getUsername(),
 					equipments.getRentTime(),
 					equipments.getReturnTime(),
 					equipments.getRentRate());
@@ -237,7 +237,69 @@ public class EquipmentServiceImpl implements EquipmentService {
 
 		return rentVoList;
 	}
+	
+	
+	@Override
+	public List<EquipmentRentVo> getEquipmentRent_detail(String username) {
+		// TODO Auto-generated method stub
+		List<EquipmentRentVo> equipmentRentVos=new ArrayList<EquipmentRentVo>();
+		List<EquipmentRent> equipments=equipmentRentDao.getEquipmentByUser(username);
+		for (EquipmentRent equipmentRent : equipments) {
+			EquipmentRentVo equipmentRentVo=new EquipmentRentVo(
+					equipmentRent.getEquipmentRent_id()+"",
+					equipmentRent.getEquipment().getName(),
+					equipmentRent.getAccount(),
+					equipmentRent.getRentTime(),
+					equipmentRent.getReturnTime(),
+					equipmentRent.getRentRate()
+					);
+			equipmentRentVos.add(equipmentRentVo);
+		}
+		return equipmentRentVos;
+	}
+	
+	//器材归还上报
+	@Override
+	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo) {
+		// TODO Auto-generated method stub
+		EquipmentRent equipmentRent=(EquipmentRent)equipmentRentDao.getEquipmentByNumber(Integer.parseInt(equipmentRentVo.getEquipmentRentNumber()));
+		equipmentRent.setUsage("1"); //改变状态
+		equipmentRent.setReason(equipmentRentVo.getReason());
+		equipmentRent.setConnection(equipmentRentVo.getConnection());
+		equipmentRentDao.update(equipmentRent);
+		return true;
+	}
+	
+	@Override
+	public List<EquipmentRentVo> getDetailReturns() {
+		// TODO Auto-generated method stub
+		List<EquipmentRentVo> equipmentRentVos=new ArrayList<EquipmentRentVo>();
+		List<EquipmentRent> equipments=equipmentRentDao.getEquipmentByUser("all");
+		for (EquipmentRent equipmentRent : equipments) {
+			EquipmentRentVo equipmentRentVo=new EquipmentRentVo(
+					equipmentRent.getEquipmentRent_id()+"",
+					equipmentRent.getEquipment().getName(),
+					equipmentRent.getAccount(),
+					equipmentRent.getUser().getUsername(),
+					equipmentRent.getRentTime(),
+					equipmentRent.getReturnTime(),
+					equipmentRent.getRentRate(),
+					equipmentRent.getReason(),
+					equipmentRent.getConnection()
+					);
+			equipmentRentVos.add(equipmentRentVo);
+		}
+		return equipmentRentVos;
+	}
 
+	@Override
+	public boolean checkReturn() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+	
 	public EquipmentDao getEquipmentDao() {
 		return equipmentDao;
 	}

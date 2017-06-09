@@ -22,7 +22,10 @@ public class EquipmentRent implements Serializable {
 	private Double rentRate;
 
 	private String canUse;
-	private String usage;
+	private String usage; // 使用情况
+
+	private String reason;
+	private String connection;
 
 	private User user;
 	private Equipment equipment;
@@ -140,4 +143,19 @@ public class EquipmentRent implements Serializable {
 		this.gameResource = gameResource;
 	}
 
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getConnection() {
+		return connection;
+	}
+
+	public void setConnection(String connection) {
+		this.connection = connection;
+	}
 }

@@ -1,5 +1,6 @@
 package com.gymsystem.daoImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -27,24 +28,23 @@ public class EquipmentDaoImpl extends BaseDaoImpl<Equipment> implements Equipmen
 	
 	@Override
 	public List<Equipment> queryEquipments(Equipment equipment) {
-		// TODO Auto-generated method stub
-		try {
-			String hql = MyUtil.getHqlFromObject(equipment);
-			Map<String,Object> queryConditions = MyUtil.objectToMap(equipment);
-			org.hibernate.Query queryUser = this.getSession().createQuery(hql);
-			for(Entry<String,Object>entry:queryConditions.entrySet()){
-				if(!entry.getValue().equals("")){
-					queryUser.setParameter(entry.getKey(), entry.getValue());
-	            }
+		// TODO Auto-generated method stub	
+		List<Equipment> queryByName=(List<Equipment>) this.getEquipmentByName(equipment.getName());
+		
+		List<Equipment> queryByType=(List<Equipment>) this.getEquipmentByType(equipment.getType());
+		
+		List<Equipment> equipmentlist=new ArrayList<Equipment>();
+		if(queryByName!=null){
+			for(Equipment equipments:queryByName){
+				equipmentlist.add(equipments);
 			}
-			return queryUser.list();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			return null;
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-			return null;
 		}
+		if(queryByType!=null){
+			for(Equipment equipments:queryByType){
+				equipmentlist.add(equipments);
+			}
+		}	
+		return equipmentlist;
 	}	
 
 	@Override 

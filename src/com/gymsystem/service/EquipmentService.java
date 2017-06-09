@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.gymsystem.vo.EquipmentRentVo;
 import com.gymsystem.vo.EquipmentRepairVo;
+import com.gymsystem.vo.EquipmentReturnVo;
 import com.gymsystem.vo.EquipmentVo;
 
 public interface EquipmentService {
@@ -27,5 +28,13 @@ public interface EquipmentService {
 	public boolean addEquipmentRent(EquipmentRentVo equipmentRentVo);
 
 	public List<EquipmentRentVo> getEquipmentRents();
+	
+	public List<EquipmentRentVo> getEquipmentRent_detail(String username);
+	
+	public boolean setEquipmentRentUsage(EquipmentRentVo equipmentRentVo);
 
+	public List<EquipmentRentVo> getDetailReturns();
+	
+	public boolean checkReturn();
+	
 }

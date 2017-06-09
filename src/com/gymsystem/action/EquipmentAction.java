@@ -11,11 +11,10 @@ public class EquipmentAction extends BaseAction<EquipmentVo> {
 
 	public String login() {
 		list = equipmentService.getEquipments();
-		System.out.print(list.get(0).getEquipmentAccount());
 		request.put("equipment", list);
 		return "login_success";
 	}
-	
+
 	public String detail() {
 		list = equipmentService.getEquipments();
 		request.put("equipment", list);
@@ -32,12 +31,18 @@ public class EquipmentAction extends BaseAction<EquipmentVo> {
 		return "delete_success";
 	}
 
+	public String queryDetail() {
+		list = equipmentService.getEquipments();
+		request.put("equipment", list);
+		return "queryDetail_success";
+	}
+
 	public String query() {
 		list = equipmentService.queryEquipment(equipmentVo);
 		request.put("equipment", list);
 		return "query_success";
 	}
-	
+
 	public EquipmentVo getEquipmentVo() {
 		return equipmentVo;
 	}

@@ -31,7 +31,7 @@
                     <li><a id="gym" href="${pageContext.request.contextPath}/index.html">首页</a></li>
                     <li><a id="match" href="login_game.html">体育赛事</a></li>
                     <li><a id="ground" href="login_ground.html">场地详情</a></li>
-                    <li class="active"><a id="equipment" href="#">闲置器材</a></li>
+                    <li class="active"><a id="equipment" href="equipmentAction_login">闲置器材</a></li>
                     <li><a id="resource" href="my_resource.html">我的资源</a></li>
                     <li><a id="notice" href="login_notice.html">公告通知</a></li>
                     <li><a id="connection" href="connection.html">联系我们</a></li>
@@ -49,12 +49,12 @@
                 <table class="table table-bordered table-hover table-striped">
                    <thead>
                         <tr>
+                        	<th>租借编号</th>
                             <th>器材名称</th>
-                            <th>闲置数量</th>
-                            <th>器材位置</th>
-                            <th>器材租金</th>
-                            <th>使用情况</th>
-                            <th>是否预约</th>
+                            <th>租借数量</th>
+                            <th>租借日期</th>
+                            <th>归还日期</th>
+                            <th>确认归还</th>
                         </tr>
                    </thead>
                    <tbody>
@@ -62,33 +62,31 @@
                     		<tr>
                     			<td>
                     				<div class="equipmentDetails">
-                    					<s:property value="#equipment.equipmentName"/>
+                    					<s:property value="#equipment.equipmentRentNumber"/>
                     				</div>
                     			</td>
                     			<td>
                     				<p>
-                    					<s:property value="#equipment.equipmentLocation"/>
+                    					<s:property value="#equipment.equipmentName"/>
                     				</p>
                     			</td>
                     			<td>
                     				<p>
-                    					<s:property value="#equipment.rentRate"/>
+                    					<s:property value="#equipment.rentNumber"/>
                     				</p>
                     			</td>
                     			<td>
                     				<p>
-                    					<s:property value="#equipment.equipmentAccount"/>
+                    					<s:property value="#equipment.rentTime"/>
                     				</p>
                     			</td>
                     			<td>
                     				<p>
-                    					<s:property value="#equipment.idleNumber"/>
+                    					<s:property value="#equipment.returnTime"/>
                     				</p>
                     			</td>
                     			<td>
-                    				<p>
-                    					<s:property value="#equipment.rentedNumber"/>
-                    				</p>
+                    				<button class="login_equipment_rent_return_a" value="<s:property value='#equipment.equipmentRentNumber'/>">归还</button>
                     			</td>
                     		</tr>
                     	</s:iterator>
@@ -100,82 +98,26 @@
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
                     <a id="equipment_rent_a"  href="#" class="list-group-item">器材租借</a>
                     <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
-                    <a id="equipment_return" href="equipmentRentAction_detailReturn?leaseHolder=111" class="list-group-item">器材归还</a>
+                    <a id="equipment_return" href="#" class="list-group-item">器材归还</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <form id="equipment_query">
-        <p>
-          <label for="equipment_query_name">器材名称</label>
-          <input id="equipment_query_name" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_type">器材类型</label>
-          <input id="equipment_query_type" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_location">器材位置</label>
-          <input id="equipment_query_location" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_canuse">可用状态</label>
-          <input id="equipment_query_canuse" type="text" name="">
-        </p>
-    </form>
-    <form id="equipment_rent">
+    
+    <form id="login_equipment_rent_return">
     	<p>
-          <label for="equipment_rent_username">租借用户</label>
-          <input id="equipment_rent_username" type="text" name="equipmentRentVo.leaseHolder" value="111" readonly>
+          <label for="equipment_rent_number">租借编号</label>
+          <input id="equipment_rent_number" type="text" name="equipmentRentVo.equipmentRentNumber" readonly>
         </p>
         <p>
-          <label for="equipment_rent_name">器材名称</label>
-          <input id="equipment_rent_name" type="text" name="equipmentRentVo.equipmentName">
+          <label for="equipment_rent_number">延期归还原因</label>
+          <input id="equipment_rent_number" type="text" name="equipmentRentVo.reason">
         </p>
         <p>
-          <label for="equipment_rent_number">器材数量</label>
-          <input id="equipment_rent_number" type="text" name="equipmentRentVo.rentNumber" placeholder="">
-        </p>
-        <p>
-          <label for="equipment_rent_borrow">借出时间</label>
-          <input id="equipment_rent_borrow" type="text" name="equipmentRentVo.rentTime">
-        </p>
-        <p>
-          <label for="equipment_rent_return">归还时间</label>
-          <input id="equipment_rent_return" type="text" name="equipmentRentVo.returnTime">
-        </p>
-        <p>
-          <label for="equipment_rent_rate">器材租金</label>
-          <input id="equipment_rent_rate" type="text" name="equipmentRentVo.totalRent" value="<%=request.getParameter("rentRate") %>>" readonly>
+          <label for="equipment_rent_rate">联系我</label>
+          <input id="equipment_rent_rate" type="text" name="equipmentRentVo.connection">
         </p>
     </form>
-    
-    
-    <form id="equipment_return">
-        <p>
-          <label for="equipment_rent_name">器材名称</label>
-          <input id="equipment_rent_name" type="text" name="equipmentRentVo.equipmentName">
-        </p>
-        <p>
-          <label for="equipment_rent_number">器材数量</label>
-          <input id="equipment_rent_number" type="text" name="equipmentRentVo.rentNumber" placeholder="">
-        </p>
-        <p>
-          <label for="equipment_rent_borrow">借出时间</label>
-          <input id="equipment_rent_borrow" type="text" name="equipmentRentVo.rentTime">
-        </p>
-        <p>
-          <label for="equipment_rent_return">归还时间</label>
-          <input id="equipment_rent_return" type="text" name="equipmentRentVo.returnTime">
-        </p>
-        <p>
-          <label for="equipment_rent_rate">器材租金</label>
-          <input id="equipment_rent_rate" type="text" name="equipmentRentVo.totalRent" value="<%=request.getParameter("rentRate") %>>" readonly>
-        </p>
-    </form>
-    
-    
     
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>

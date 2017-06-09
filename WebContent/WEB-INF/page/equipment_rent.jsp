@@ -103,10 +103,11 @@
             <div class="col-xs-6 col-sm-3  sidebar-offcanvas" id="sidebar">
                 <div class="list-group">
                     <a href="#" class="list-group-item active">体育馆管理系统</a>
-                    <a id="equipment_query_a" href="#" class="list-group-item">器材查询</a>
-                    <a id="equipment_add_a" href="#" class="list-group-item">购置新添</a>
+                    <a id="equipment_query_a" href="equipmentAction_queryDetail" class="list-group-item">器材查询</a>
+                    <a id="equipment_add_a" href="equipmentAction_detail" class="list-group-item">购置新添</a>
                     <a id="equipment_repair_a" href="equipmentRepairAction_detail" class="list-group-item">维修情况</a>
                     <a id="equipment_rent_a" href="#" class="list-group-item">租借情况</a>
+                    <a id="equipment_return_a" href="equipmentRentAction_getDetailReturns" class="list-group-item">器材审核</a>
                </div>
             </div>
         </div>
@@ -144,24 +145,6 @@
         </p>
     </form>
 
-    <form id="equipment_query">
-        <p>
-          <label for="equipment_query_name">器材名称</label>
-          <input id="equipment_query_name" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_type">器材类型</label>
-          <input id="equipment_query_type" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_location">器材位置</label>
-          <input id="equipment_query_location" type="text" name="">
-        </p>
-        <p>
-          <label for="equipment_query_canuse">可用状态</label>
-          <input id="equipment_query_canuse" type="text" name="">
-        </p>
-    </form>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>

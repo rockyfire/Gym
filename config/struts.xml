@@ -31,16 +31,7 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+         
         
         
         
@@ -113,13 +104,19 @@
 			</result>
 			<result name="delete_success" type="redirect">equipmentAction_detail
 			</result>
-			<result name="query_success" type="redirect">equipmentAction_detail
+			<result name="queryDetail_success">/WEB-INF/page/equipment_query.jsp
+			</result>
+			<result name="query_success">/WEB-INF/page/equipment_query.jsp
 			</result>
 		</action>
 
 		<action name="equipmentRentAction_*" method="{1}"
 			class="com.gymsystem.action.EquipmentRentAction">
 			<result name="detail_success">/WEB-INF/page/equipment_rent.jsp</result>
+			<result name="detailReturn_success">/WEB-INF/page/login_equipment_rent.jsp</result>
+			<result name="confirm_success" type="redirect">equipmentRentAction_detailRent</result>
+			<result name="getDetailReturns_success">/WEB-INF/page/equipment_return.jsp</result>
+			
 			<result name="addRent_success" type="redirect">equipmentRentAction_detail
 			</result>
 		</action>
@@ -130,16 +127,7 @@
 			<result name="addRepair_success" type="redirect">equipmentRepairAction_detail
 			</result>
 		</action>
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
+	
          
          
          
