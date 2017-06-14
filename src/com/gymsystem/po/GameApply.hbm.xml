@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-20 10:18:30 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.GameApply" table="GAMEAPPLY">
+        <id name="gameApply_id" type="java.lang.Integer">
+            <column name="GAMEAPPLY_ID" />
+            <generator class="native" />
+        </id>
+        <property name="gameApplyNumber" type="java.lang.String">
+            <column name="GAMEAPPLYNUMBER" />
+        </property>
+        <property name="sponsor" type="java.lang.String">
+            <column name="SPONSOR" />
+        </property>
+        <property name="Approver" type="java.lang.String">
+            <column name="APPROVER" />
+        </property>
+        <property name="approvalInstitude" type="java.lang.String">
+            <column name="APPROVALINSTITUDE" />
+        </property>
+        <property name="organizer" type="java.lang.String">
+            <column name="ORGANIZER" />
+        </property>
+        <property name="applyTime" type="java.util.Date">
+            <column name="APPLYTIME" />
+        </property>
+        <many-to-one name="appler" class="com.gymsystem.po.User" fetch="join" cascade="save-update">
+            <column name="APPLER" />
+        </many-to-one>
+        <one-to-one name="game" class="com.gymsystem.po.Game"></one-to-one>
+        <one-to-one name="gameResource" class="com.gymsystem.po.GameResource"></one-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.EquipmentRent" table="EQUIPMENTRENT">
+        <id name="equipmentRent_id" type="java.lang.Integer">
+            <column name="EQUIPMENTRENT_ID" />
+            <generator class="native" />
+        </id>
+        <property name="rentTime" type="java.util.Date">
+            <column name="RENTTIME" />
+        </property>
+        <property name="returnTime" type="java.util.Date">
+            <column name="RETURNTIME" />
+        </property>
+        <property name="rentRate" type="java.lang.String">
+            <column name="RENTRATE" />
+        </property>
+        <property name="account" type="int">
+            <column name="ACCOUNT" />
+        </property>
+        <property name="canUse" type="java.lang.String">
+            <column name="CANUSE" />
+        </property>
+        <property name="usage" type="java.lang.String">
+            <column name="USAGE" />
+        </property>
+        <many-to-one name="user" class="com.gymsystem.po.User" fetch="join" cascade="save-update">
+            <column name="USER" />
+        </many-to-one>
+        <many-to-one name="equipment" class="com.gymsystem.po.Equipment" fetch="join" cascade="save-update">
+            <column name="EQUIPMENT" />
+        </many-to-one>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
+        <one-to-one name="gameResource" class="com.gymsystem.po.GameResource"></one-to-one>
+    </class>
+</hibernate-mapping>

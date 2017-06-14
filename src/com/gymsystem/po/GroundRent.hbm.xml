@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.GroundRent" table="GROUNDRENT">
+        <id name="groundRend_id" type="java.lang.Integer">
+            <column name="GROUNDREND_ID" />
+            <generator class="native" />
+        </id>
+        <property name="groundRendNumber" type="java.lang.String">
+            <column name="GROUNDRENDNUMBER" />
+        </property>
+        <property name="rentStartTime" type="java.util.Date">
+            <column name="RENTSTARTTIME" />
+        </property>
+        <property name="rentEndTime" type="java.util.Date">
+            <column name="RENTENDTIME" />
+        </property>
+        <property name="userage" type="java.lang.String">
+            <column name="USERAGE" />
+        </property>
+        <property name="isBroken" type="boolean" access="field">
+            <column name="ISBROKEN" />
+        </property>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard"></one-to-one>
+        <many-to-one name="user" class="com.gymsystem.po.User" fetch="join">
+            <column name="USER" />
+        </many-to-one>
+        <many-to-one name="ground" class="com.gymsystem.po.Ground" fetch="join" lazy="false">
+            <column name="GROUND" />
+        </many-to-one>
+        <many-to-one name="gameResource" class="com.gymsystem.po.GameResource" fetch="join">
+            <column name="GAMERESOURCE" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

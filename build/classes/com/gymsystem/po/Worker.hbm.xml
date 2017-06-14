@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Worker" table="WORKER">
+        <id name="worker_id" type="java.lang.Integer">
+            <column name="WORKER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="workerNumber" type="java.lang.String">
+            <column name="WORKERNUMBER" />
+        </property>
+        <property name="sex" type="boolean">
+            <column name="SEX" />
+        </property>
+        <property name="age" type="int">
+            <column name="AGE" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="IDNumber" type="java.lang.String">
+            <column name="IDNUMBER" />
+        </property>
+        <property name="entryTime" type="java.util.Date">
+            <column name="ENTRYTIME" />
+        </property>
+        <property name="dimissionTime" type="java.util.Date">
+            <column name="DIMISSIONTIME" />
+        </property>
+        <list name="workManages" inverse="false" table="WORKMANAGE" lazy="true" cascade="save-update">
+            <key>
+                <column name="WORKER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.WorkManage" />
+        </list>
+        <many-to-one name="station" class="com.gymsystem.po.Station" fetch="join" cascade="save-update">
+            <column name="STATION" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

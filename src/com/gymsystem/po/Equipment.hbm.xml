@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.Equipment" table="EQUIPMENT">
+        <id name="equipment_id" type="java.lang.Integer">
+            <column name="EQUIPMENT_ID" />
+            <generator class="native" />
+        </id>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="location" type="java.lang.String">
+            <column name="LOCATION" />
+        </property>
+        <property name="rate" type="double">
+            <column name="RATE" />
+        </property>
+        <property name="buyTime" type="java.util.Date">
+            <column name="BUYTIME" />
+        </property>
+        <property name="distroyTime" type="java.util.Date">
+            <column name="DISTROYTIME" />
+        </property>
+        <property name="canUse" type="boolean">
+            <column name="CANUSE" />
+        </property>
+        <property name="equipmentNumber" type="java.lang.String">
+            <column name="EQUIPMENTNUMBER" />
+        </property>
+        <property name="number" type="int">
+            <column name="NUMBER" />
+        </property>
+        <property name="accountNumber" type="int">
+            <column name="ACCOUNTNUMBER" />
+        </property>
+        <property name="repairNumber" type="int">
+            <column name="REPAIRNUMBER" />
+        </property>
+        <property name="rentedNumber" type="int">
+            <column name="RENTEDNUMBER" />
+        </property>
+        <list name="equipmentRents" inverse="false" table="EQUIPMENTRENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="EQUIPMENT_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.EquipmentRent" />
+        </list>
+        <list name="equipmentRepairs" inverse="false" table="EQUIPMENTREPAIR" lazy="true" cascade="save-update">
+            <key>
+                <column name="EQUIPMENT_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.EquipmentRepair" />
+        </list>
+    </class>
+</hibernate-mapping>

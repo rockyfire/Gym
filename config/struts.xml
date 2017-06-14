@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" /> 
+
+	
+	
+    <package name="hs" extends="json-default" namespace="/">
+        
+        <global-results>
+            <result name="error">/WEB-INF/page/error.jsp</result>
+        </global-results>
+        
+        
+        <action name="groundAction_*" method="{1}" class="com.gymsystem.action.GroundAction">
+            <result name="toGroundList_success">/WEB-INF/page/ground.jsp</result>
+            
+            <result name="addGroundRent_success" type="redirect">groundAction_toGroundRent</result>
+            <result name="toGroundRent_success">/WEB-INF/page/ground_rent.jsp</result>
+            <result name="addGroundRepair_success" type="redirect">
+                groundAction_toGroundRepaires?groundVo.groundNumber=${groundVo.groundNumber}
+            </result>
+            <result name="toGroundRepaires_success">/WEB-INF/page/ground_repair.jsp</result>
+            <result name="addGround_success" type="chain">groundAction_toGroundList</result>
+            <result name="deleteGround_success" type="redirect">groundAction_toGroundList</result>
+            
+        </action>
+        
+        
+        
+         
+        
+        
+        
+        <action name="jsonAction_*" method="{1}" class="com.gymsystem.action.JsonAction">
+            <result name="jsonSuccess" type="json">
+                <param name="contentType">text/html</param>
+                <!-- <param name="includeProperties">userNumber</param>
+                <param name=""></param> -->
+            </result>
+            <result type="json">
+				<param name="root">result</param>
+			</result>
+        </action>
+        
+        
+        <action name="roleAction_*" method="{1}" class="com.gymsystem.action.RoleAction">
+            
+            
+            <result name="updateRoleResources_success" type="chain">roleAction_toRoleResource</result>
+            
+            <result name="updateUserRoles_success" type="chain">userAction_toUserAuthority</result>
+            <result name="toRoleManage_success">/WEB-INF/page/usermanager_role.jsp</result>
+            <result name="toRoleResource_success">/WEB-INF/page/usermanager_roleresource.jsp</result>
+            <result name="addRole_success" type="chain">roleAction_toRoleManage</result>
+            
+            
+            
+            <result name="deleteRole_success" type="chain">roleAction_toRoleManage</result>
+            <result name="updateRole_success" type="chain">roleAction_toRoleManage</result>
+            <result name="getRole_success" type="json">
+                <param name="contentType">text/html</param>
+                <param name="noCache">true</param>
+                <param name="includeProperties">roleVo.*</param>
+            </result>
+            
+            
+            <result name="getUserRoles_success" type="json">
+                <param name="root">list</param>
+                <param name="contentType">text/html</param>
+                <param name="noCache">true</param>
+                <param name="excludeProperties">userVo</param>
+            </result>
+        </action>
+        
+        
+         <action name="userAction_*" method="{1}" class="com.gymsystem.action.UserAction">
+             <result name="addUser_success">/WEB-INF/page/usermanager.jsp</result>
+             <result name="deleteUser_success">/WEB-INF/page/usermanager.jsp</result>
+             <result name="login_success">/WEB-INF/page/usermanager.jsp</result>
+             <result name="updateUser_success">/WEB-INF/page/usermanager.jsp</result>
+             <result name="userAuthority" type="chain">userAction_toUserAuthority</result>
+             <result name="toUserAUthority_success">/WEB-INF/page/usermanager_authority.jsp</result>
+             <result name="userDetails_success" type="json">
+                 <param name="contentType">text/html</param>
+                 <param name="noCache">true</param>
+                 <!-- <param name="root">userVo.*</param> -->
+                 <param name="excludeProperties">userVo</param>
+                 <!-- <param name="includeProperties">list\[d+\]\.*</param> -->
+             </result>
+         </action>
+         
+         
+         <action name="equipmentAction_*" method="{1}"
+			class="com.gymsystem.action.EquipmentAction">
+			<result name="login_success">/WEB-INF/page/login_equipment.jsp
+			</result>
+			<result name="detail_success">/WEB-INF/page/equipment.jsp
+			</result>
+			<result name="add_success" type="redirect">equipmentAction_detail
+			</result>
+			<result name="delete_success" type="redirect">equipmentAction_detail
+			</result>
+			<result name="queryDetail_success">/WEB-INF/page/equipment_query.jsp
+			</result>
+			<result name="queryDetail_user_success">/WEB-INF/page/login_equipment_query.jsp</result>
+			<result name="query_user_success">/WEB-INF/page/login_equipment_query.jsp</result>
+			<result name="query_success">/WEB-INF/page/equipment_query.jsp
+			</result>
+		</action>
+
+		<action name="equipmentRentAction_*" method="{1}"
+			class="com.gymsystem.action.EquipmentRentAction">
+			<result name="detail_success">/WEB-INF/page/equipment_rent.jsp</result>
+			<result name="detailReturn_success">/WEB-INF/page/login_equipment_rent.jsp</result>
+			<result name="confirm_success" type="redirect">equipmentRentAction_detailRent</result>
+			<result name="getDetailReturns_success">/WEB-INF/page/equipment_return.jsp</result>
+			<result name="check_success" type="redirect">equipmentRentAction_getDetailReturns</result>
+			<result name="addRent_success" type="redirect">equipmentRentAction_detail
+			</result>
+		</action>
+
+		<action name="equipmentRepairAction_*" method="{1}"
+			class="com.gymsystem.action.EquipmentRepairAction">
+			<result name="detail_success">/WEB-INF/page/equipment_repair.jsp</result>
+			<result name="addRepair_success" type="redirect">equipmentRepairAction_detail
+			</result>
+		</action>
+	
+
+    </package>
+
+</struts>

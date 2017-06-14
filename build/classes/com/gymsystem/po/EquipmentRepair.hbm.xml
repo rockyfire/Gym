@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.EquipmentRepair" table="EQUIPMENTREPAIR">
+        <id name="equipmentRepair_Id" type="java.lang.Integer">
+            <column name="EQUIPMENTREPAIR_ID" />
+            <generator class="native" />
+        </id>
+        <property name="repairTime" type="java.util.Date">
+            <column name="REPAIRTIME" />
+        </property>
+        <property name="equipmentRepairNumber" type="int">
+            <column name="EQUIPMENTREPAIRNUMBER" />
+        </property>
+        <property name="repairContent" type="java.lang.String">
+            <column name="REPAIRCONTENT" />
+        </property>
+        <many-to-one name="equipment" class="com.gymsystem.po.Equipment"  lazy="false" fetch="join" cascade="save-update">
+            <column name="EQUIPMENT" />
+        </many-to-one>
+        <one-to-one name="tradeCard" class="com.gymsystem.po.TradeCard" lazy="false"></one-to-one>
+        <list name="workManages" inverse="false" table="WORKMANAGE" lazy="true" cascade="save-update">
+            <key>
+                <column name="EQUIPMENTREPAIR_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.WorkManage" />
+        </list>
+    </class>
+</hibernate-mapping>

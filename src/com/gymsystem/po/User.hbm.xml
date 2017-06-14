@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.User" table="USER">
+        <id name="user_id" type="java.lang.Integer">
+            <column name="USER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="userNumber" type="java.lang.String">
+            <column name="USERNUMBER" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <one-to-one name="userMessage" class="com.gymsystem.po.UserMessage" cascade="save-update"></one-to-one>	
+        
+       <!--  <many-to-one name="role" class="com.gymsystem.po.Role" fetch="join">
+            <column name="ROLE" />
+        </many-to-one> -->
+        
+        
+        
+        <list name="roles" inverse="false" lazy="false" cascade="save-update">
+            <key><column name="USER_ID"></column></key>
+            <list-index></list-index>
+            <many-to-many column="ROLE_ID" class="com.gymsystem.po.Role"></many-to-many>
+        </list>
+        
+        
+        
+        <list name="equipmentRents" inverse="false" table="EQUIPMENTRENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.EquipmentRent" />
+        </list>
+        <list name="groundRents" inverse="false" table="GROUNDRENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.GroundRent" />
+        </list>
+        <list name="announceComments" inverse="false" table="ANNOUNCECOMMENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.AnnounceComment" />
+        </list>
+        <list name="announcements" inverse="false" table="ANNOUNCEMENT" lazy="true" cascade="save-update">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.Announcement" />
+        </list>
+        <list name="gameApplies" inverse="false" table="GAMEAPPLY" lazy="true" cascade="save-update">
+            <key>
+                <column name="USER_ID" />
+            </key>
+            <list-index></list-index>
+            <one-to-many class="com.gymsystem.po.GameApply" />
+        </list>
+    </class>
+</hibernate-mapping>

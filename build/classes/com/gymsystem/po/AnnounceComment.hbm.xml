@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-19 15:58:22 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.gymsystem.po.AnnounceComment" table="ANNOUNCECOMMENT">
+        <id name="AnnounceComment_id" type="java.lang.Integer">
+            <column name="ANNOUNCECOMMENT_ID" />
+            <generator class="native" />
+        </id>
+        <property name="AnnounceCommentNumber" type="java.lang.String">
+            <column name="ANNOUNCECOMMENTNUMBER" />
+        </property>
+        <property name="commentContent" type="java.lang.String">
+            <column name="COMMENTCONTENT" />
+        </property>
+        <property name="commentTime" type="java.util.Date">
+            <column name="COMMENTTIME" />
+        </property>
+        <many-to-one name="commenter" class="com.gymsystem.po.User" fetch="join">
+            <column name="COMMENTER" />
+        </many-to-one>
+        <many-to-one name="announcement" class="com.gymsystem.po.Announcement" fetch="join">
+            <column name="ANNOUNCEMENT" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

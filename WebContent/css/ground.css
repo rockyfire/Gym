@@ -1,0 +1,30 @@
+.nav_bar{
+	width: 100%;
+	background: orange;
+	text-align: center;
+	z-index: 999;
+}
+.nav_bar ul{
+	width: auto;
+	margin: auto;
+	padding: 0px;
+	height: 40px;
+	list-style-type: none;
+}
+.nav_bar ul li{
+	margin: auto;
+	width: 204px;
+	height: 40px;
+	font-size: 20px;
+	display: table-cell;
+	line-height: 38px;
+}
+.nav_bar ul li a {
+	width: 80px;
+	height: 40px;
+	color: white;
+	background-color: orange; 
+	text-decoration: none;
+	display: block;
+	display: inline-block;
+}
